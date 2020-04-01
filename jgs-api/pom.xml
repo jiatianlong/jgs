@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jgs</artifactId>
+        <groupId>org.jtl</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>jgs-api</artifactId>
+    <!--
+          api -> service -> mapper -> pojo -> common
+          api -> service -> mapper是可以通过pojo使用common中的方法的
+          api是控制层
+     -->
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jtl</groupId>
+            <artifactId>jgs-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>

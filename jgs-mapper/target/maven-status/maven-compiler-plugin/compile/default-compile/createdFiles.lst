@@ -1,0 +1,14 @@
+com\jtl\mapper\OrdersMapper.class
+com\jtl\mapper\ItemsCommentsMapper.class
+com\jtl\mapper\CategoryMapper.class
+com\jtl\mapper\ItemsMapper.class
+com\jtl\mapper\UsersMapper.class
+com\jtl\mapper\OrderStatusMapper.class
+com\jtl\mapper\ItemsParamMapper.class
+com\jtl\mapper\OrderItemsMapper.class
+com\jtl\mapper\CarouselMapper.class
+com\jtl\mapper\ItemsSpecMapper.class
+com\jtl\mapper\StuMapper.class
+com\jtl\mapper\ItemsImgMapper.class
+com\jtl\my\mapper\MyMapper.class
+com\jtl\mapper\UserAddressMapper.class
