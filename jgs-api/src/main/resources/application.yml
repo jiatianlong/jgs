@@ -4,7 +4,7 @@
 #
 ############################################################
 server:
-  #  port: 8088
+  port: 8080
   tomcat:
     uri-encoding: UTF-8
   max-http-header-size: 80KB
@@ -40,3 +40,6 @@ mybatis:
     mappers: com.jtl.my.mapper.MyMapper
     not-empty: false    # 在进行数据库操作的的时候，判断表达式 username != null, 是否追加 username != ''
     identity: MYSQL
+logging:
+  level:
+    com.jtl.my.mapper: debug
