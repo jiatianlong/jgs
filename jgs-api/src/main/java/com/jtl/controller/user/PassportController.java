@@ -43,12 +43,12 @@ public class PassportController {
     public JTLJSONResult regist(@RequestBody UsersBO usersBO){
         String username = usersBO.getUsername();
         String password = usersBO.getPassword();
-        String confirmPwd = usersBO.getCpmfirmPassword();
+        String confirmPassword = usersBO.getConfirmPassword();
 
         //0.判断用户名和密码必须不为空
         if (StringUtils.isBlank(username) ||
                 StringUtils.isBlank(password) ||
-                StringUtils.isBlank(confirmPwd) ){
+                StringUtils.isBlank(confirmPassword) ){
             return JTLJSONResult.errorMsg("用户或密码不能为空");
         }
         //1.查询用户名是否存在
@@ -63,7 +63,7 @@ public class PassportController {
         }
 
         //3.判断两次密码是否一致
-        if (!password.equals(confirmPwd)){
+        if (!password.equals(confirmPassword)){
             return JTLJSONResult.errorMsg("两次密码输入不一致");
         }
         //4.实现注册

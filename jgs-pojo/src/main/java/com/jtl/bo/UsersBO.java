@@ -13,7 +13,7 @@ public class UsersBO {
     private String password;
 
     @ApiModelProperty(value = "确认密码",name = "password",example = "123456",required = true)
-    private String cpmfirmPassword;
+    private String confirmPassword;
 
     public String getUsername() {
         return username;
@@ -31,11 +31,11 @@ public class UsersBO {
         this.password = password;
     }
 
-    public String getCpmfirmPassword() {
-        return cpmfirmPassword;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setCpmfirmPassword(String cpmfirmPassword) {
-        this.cpmfirmPassword = cpmfirmPassword;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

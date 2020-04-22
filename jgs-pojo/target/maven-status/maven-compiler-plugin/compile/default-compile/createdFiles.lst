@@ -10,4 +10,5 @@ com\jtl\pojo\Orders.class
 com\jtl\pojo\ItemsComments.class
 com\jtl\pojo\ItemsSpec.class
 com\jtl\pojo\Items.class
+com\jtl\bo\UsersBO.class
 com\jtl\pojo\ItemsParam.class
