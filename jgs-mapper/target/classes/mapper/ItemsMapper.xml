@@ -5,14 +5,16 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="store_shop_id" property="storeShopId" jdbcType="INTEGER" />
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
     <result column="cat_id" property="catId" jdbcType="INTEGER" />
     <result column="root_cat_id" property="rootCatId" jdbcType="INTEGER" />
-    <result column="sell_counts" property="sellCounts" jdbcType="INTEGER" />
-    <result column="on_off_status" property="onOffStatus" jdbcType="INTEGER" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
-    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <result column="sell_counts" property="sellCounts" jdbcType="VARCHAR" />
+    <result column="on_off_status" property="onOffStatus" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

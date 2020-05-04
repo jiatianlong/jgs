@@ -1,16 +1,13 @@
 package com.jtl.pojo;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Table(name = "order_status")
 public class OrderStatus {
     /**
-     * 订单ID;对应订单表的主键id
+     * 订单ID
      */
-    @Id
     @Column(name = "order_id")
     private String orderId;
 
@@ -18,57 +15,57 @@ public class OrderStatus {
      * 订单状态
      */
     @Column(name = "order_status")
-    private Integer orderStatus;
+    private String orderStatus;
 
     /**
-     * 订单创建时间;对应[10:待付款]状态
+     * 订单创建时间
      */
     @Column(name = "created_time")
-    private Date createdTime;
+    private String createdTime;
 
     /**
-     * 支付成功时间;对应[20:已付款，待发货]状态
+     * 支付成功时间
      */
     @Column(name = "pay_time")
-    private Date payTime;
+    private String payTime;
 
     /**
-     * 发货时间;对应[30：已发货，待收货]状态
+     * 发货时间
      */
     @Column(name = "deliver_time")
-    private Date deliverTime;
+    private String deliverTime;
 
     /**
-     * 交易成功时间;对应[40：交易成功]状态
+     * 交易成功时间
      */
     @Column(name = "success_time")
-    private Date successTime;
+    private String successTime;
 
     /**
-     * 交易关闭时间;对应[50：交易关闭]状态
+     * 交易关闭时间
      */
     @Column(name = "close_time")
-    private Date closeTime;
+    private String closeTime;
 
     /**
-     * 留言时间;用户在交易成功后的留言时间
+     * 留言时间
      */
     @Column(name = "comment_time")
-    private Date commentTime;
+    private String commentTime;
 
     /**
-     * 获取订单ID;对应订单表的主键id
+     * 获取订单ID
      *
-     * @return order_id - 订单ID;对应订单表的主键id
+     * @return order_id - 订单ID
      */
     public String getOrderId() {
         return orderId;
     }
 
     /**
-     * 设置订单ID;对应订单表的主键id
+     * 设置订单ID
      *
-     * @param orderId 订单ID;对应订单表的主键id
+     * @param orderId 订单ID
      */
     public void setOrderId(String orderId) {
         this.orderId = orderId;
@@ -79,7 +76,7 @@ public class OrderStatus {
      *
      * @return order_status - 订单状态
      */
-    public Integer getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
@@ -88,115 +85,115 @@ public class OrderStatus {
      *
      * @param orderStatus 订单状态
      */
-    public void setOrderStatus(Integer orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 
     /**
-     * 获取订单创建时间;对应[10:待付款]状态
+     * 获取订单创建时间
      *
-     * @return created_time - 订单创建时间;对应[10:待付款]状态
+     * @return created_time - 订单创建时间
      */
-    public Date getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
     /**
-     * 设置订单创建时间;对应[10:待付款]状态
+     * 设置订单创建时间
      *
-     * @param createdTime 订单创建时间;对应[10:待付款]状态
+     * @param createdTime 订单创建时间
      */
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 
     /**
-     * 获取支付成功时间;对应[20:已付款，待发货]状态
+     * 获取支付成功时间
      *
-     * @return pay_time - 支付成功时间;对应[20:已付款，待发货]状态
+     * @return pay_time - 支付成功时间
      */
-    public Date getPayTime() {
+    public String getPayTime() {
         return payTime;
     }
 
     /**
-     * 设置支付成功时间;对应[20:已付款，待发货]状态
+     * 设置支付成功时间
      *
-     * @param payTime 支付成功时间;对应[20:已付款，待发货]状态
+     * @param payTime 支付成功时间
      */
-    public void setPayTime(Date payTime) {
+    public void setPayTime(String payTime) {
         this.payTime = payTime;
     }
 
     /**
-     * 获取发货时间;对应[30：已发货，待收货]状态
+     * 获取发货时间
      *
-     * @return deliver_time - 发货时间;对应[30：已发货，待收货]状态
+     * @return deliver_time - 发货时间
      */
-    public Date getDeliverTime() {
+    public String getDeliverTime() {
         return deliverTime;
     }
 
     /**
-     * 设置发货时间;对应[30：已发货，待收货]状态
+     * 设置发货时间
      *
-     * @param deliverTime 发货时间;对应[30：已发货，待收货]状态
+     * @param deliverTime 发货时间
      */
-    public void setDeliverTime(Date deliverTime) {
+    public void setDeliverTime(String deliverTime) {
         this.deliverTime = deliverTime;
     }
 
     /**
-     * 获取交易成功时间;对应[40：交易成功]状态
+     * 获取交易成功时间
      *
-     * @return success_time - 交易成功时间;对应[40：交易成功]状态
+     * @return success_time - 交易成功时间
      */
-    public Date getSuccessTime() {
+    public String getSuccessTime() {
         return successTime;
     }
 
     /**
-     * 设置交易成功时间;对应[40：交易成功]状态
+     * 设置交易成功时间
      *
-     * @param successTime 交易成功时间;对应[40：交易成功]状态
+     * @param successTime 交易成功时间
      */
-    public void setSuccessTime(Date successTime) {
+    public void setSuccessTime(String successTime) {
         this.successTime = successTime;
     }
 
     /**
-     * 获取交易关闭时间;对应[50：交易关闭]状态
+     * 获取交易关闭时间
      *
-     * @return close_time - 交易关闭时间;对应[50：交易关闭]状态
+     * @return close_time - 交易关闭时间
      */
-    public Date getCloseTime() {
+    public String getCloseTime() {
         return closeTime;
     }
 
     /**
-     * 设置交易关闭时间;对应[50：交易关闭]状态
+     * 设置交易关闭时间
      *
-     * @param closeTime 交易关闭时间;对应[50：交易关闭]状态
+     * @param closeTime 交易关闭时间
      */
-    public void setCloseTime(Date closeTime) {
+    public void setCloseTime(String closeTime) {
         this.closeTime = closeTime;
     }
 
     /**
-     * 获取留言时间;用户在交易成功后的留言时间
+     * 获取留言时间
      *
-     * @return comment_time - 留言时间;用户在交易成功后的留言时间
+     * @return comment_time - 留言时间
      */
-    public Date getCommentTime() {
+    public String getCommentTime() {
         return commentTime;
     }
 
     /**
-     * 设置留言时间;用户在交易成功后的留言时间
+     * 设置留言时间
      *
-     * @param commentTime 留言时间;用户在交易成功后的留言时间
+     * @param commentTime 留言时间
      */
-    public void setCommentTime(Date commentTime) {
+    public void setCommentTime(String commentTime) {
         this.commentTime = commentTime;
     }
 }

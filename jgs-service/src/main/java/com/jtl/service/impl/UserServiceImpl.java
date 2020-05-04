@@ -2,11 +2,8 @@ package com.jtl.service.impl;
 
 import com.jtl.bo.UsersBO;
 import com.jtl.enums.Sex;
-import com.jtl.mapper.StuMapper;
 import com.jtl.mapper.UsersMapper;
-import com.jtl.pojo.Stu;
 import com.jtl.pojo.Users;
-import com.jtl.service.StuService;
 import com.jtl.service.UserService;
 import com.jtl.utils.DateUtil;
 import com.jtl.utils.MD5Utils;
@@ -31,10 +28,19 @@ public class UserServiceImpl implements UserService {
 
     private static final String USER_FACE = "默认头像地址";
 
+    /**
+     * 判断用户是否存在
+     * @param username
+     * @return
+     */
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public boolean queryUsernameIsExist(String username) {
-
+       /* try {
+            Thread.sleep(3500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
         Example userExmple = new Example(Users.class);
         Example.Criteria userCriteria = userExmple.createCriteria();
         userCriteria.andEqualTo("username",username);
@@ -43,14 +49,16 @@ public class UserServiceImpl implements UserService {
         return result == null ? false : true;
     }
 
+    /**
+     * 添加用户
+     * @param usersBO
+     * @return
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public Users createUser(UsersBO usersBO) {
 
-        String userId = sid.nextShort();
-
         Users users = new Users();
-        users.setId(userId);
         users.setUsername(usersBO.getUsername());
         try {
             users.setPassword(MD5Utils.getMD5Str(usersBO.getPassword()));
@@ -72,5 +80,24 @@ public class UserServiceImpl implements UserService {
         usersMapper.insert(users);
 
         return users;
+    }
+
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public Users queryUserForLogin(String username, String password) {
+        Example userExmple = new Example(Users.class);
+        Example.Criteria userCriteria = userExmple.createCriteria();
+        userCriteria.andEqualTo("username",username);
+        userCriteria.andEqualTo("password",password);
+
+        Users result = usersMapper.selectOneByExample(userExmple);
+
+        return result;
     }
 }

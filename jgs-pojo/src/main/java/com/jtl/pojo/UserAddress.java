@@ -3,31 +3,22 @@ package com.jtl.pojo;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Table(name = "user_address")
 public class UserAddress {
-    /**
-     * 地址主键id
-     */
     @Id
-    private String id;
+    private Integer id;
 
     /**
-     * 关联用户id
+     * 用户ID
      */
     @Column(name = "user_id")
-    private String userId;
+    private Integer userId;
 
     /**
-     * 收件人姓名
+     * 收件人性名
      */
     private String receiver;
-
-    /**
-     * 收件人手机号
-     */
-    private String mobile;
 
     /**
      * 省份
@@ -50,7 +41,7 @@ public class UserAddress {
     private String detail;
 
     /**
-     * 扩展字段
+     * 拓展字段
      */
     private String extand;
 
@@ -64,84 +55,62 @@ public class UserAddress {
      * 创建时间
      */
     @Column(name = "created_time")
-    private Date createdTime;
+    private String createdTime;
 
     /**
      * 更新时间
      */
     @Column(name = "updated_time")
-    private Date updatedTime;
+    private String updatedTime;
 
     /**
-     * 获取地址主键id
-     *
-     * @return id - 地址主键id
+     * @return id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
-     * 设置地址主键id
-     *
-     * @param id 地址主键id
+     * @param id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 获取关联用户id
+     * 获取用户ID
      *
-     * @return user_id - 关联用户id
+     * @return user_id - 用户ID
      */
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
     /**
-     * 设置关联用户id
+     * 设置用户ID
      *
-     * @param userId 关联用户id
+     * @param userId 用户ID
      */
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
     /**
-     * 获取收件人姓名
+     * 获取收件人性名
      *
-     * @return receiver - 收件人姓名
+     * @return receiver - 收件人性名
      */
     public String getReceiver() {
         return receiver;
     }
 
     /**
-     * 设置收件人姓名
+     * 设置收件人性名
      *
-     * @param receiver 收件人姓名
+     * @param receiver 收件人性名
      */
     public void setReceiver(String receiver) {
         this.receiver = receiver;
-    }
-
-    /**
-     * 获取收件人手机号
-     *
-     * @return mobile - 收件人手机号
-     */
-    public String getMobile() {
-        return mobile;
-    }
-
-    /**
-     * 设置收件人手机号
-     *
-     * @param mobile 收件人手机号
-     */
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
     }
 
     /**
@@ -217,18 +186,18 @@ public class UserAddress {
     }
 
     /**
-     * 获取扩展字段
+     * 获取拓展字段
      *
-     * @return extand - 扩展字段
+     * @return extand - 拓展字段
      */
     public String getExtand() {
         return extand;
     }
 
     /**
-     * 设置扩展字段
+     * 设置拓展字段
      *
-     * @param extand 扩展字段
+     * @param extand 拓展字段
      */
     public void setExtand(String extand) {
         this.extand = extand;
@@ -257,7 +226,7 @@ public class UserAddress {
      *
      * @return created_time - 创建时间
      */
-    public Date getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
@@ -266,7 +235,7 @@ public class UserAddress {
      *
      * @param createdTime 创建时间
      */
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 
@@ -275,7 +244,7 @@ public class UserAddress {
      *
      * @return updated_time - 更新时间
      */
-    public Date getUpdatedTime() {
+    public String getUpdatedTime() {
         return updatedTime;
     }
 
@@ -284,7 +253,7 @@ public class UserAddress {
      *
      * @param updatedTime 更新时间
      */
-    public void setUpdatedTime(Date updatedTime) {
+    public void setUpdatedTime(String updatedTime) {
         this.updatedTime = updatedTime;
     }
 }

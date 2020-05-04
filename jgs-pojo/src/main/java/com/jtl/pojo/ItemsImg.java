@@ -3,34 +3,30 @@ package com.jtl.pojo;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Table(name = "items_img")
 public class ItemsImg {
-    /**
-     * 图片主键
-     */
     @Id
-    private String id;
+    private Integer id;
 
     /**
-     * 商品外键id 商品外键id
+     * 商品ID
      */
     @Column(name = "item_id")
-    private String itemId;
+    private Integer itemId;
 
     /**
-     * 图片地址 图片地址
+     * 图片地址
      */
     private String url;
 
     /**
-     * 顺序 图片顺序，从小到大
+     * 图片顺序
      */
     private Integer sort;
 
     /**
-     * 是否主图 是否主图，1：是，0：否
+     * 是否主图
      */
     @Column(name = "is_main")
     private Integer isMain;
@@ -39,99 +35,95 @@ public class ItemsImg {
      * 创建时间
      */
     @Column(name = "created_time")
-    private Date createdTime;
+    private String createdTime;
 
     /**
      * 更新时间
      */
     @Column(name = "updated_time")
-    private Date updatedTime;
+    private String updatedTime;
 
     /**
-     * 获取图片主键
-     *
-     * @return id - 图片主键
+     * @return id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
-     * 设置图片主键
-     *
-     * @param id 图片主键
+     * @param id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 获取商品外键id 商品外键id
+     * 获取商品ID
      *
-     * @return item_id - 商品外键id 商品外键id
+     * @return item_id - 商品ID
      */
-    public String getItemId() {
+    public Integer getItemId() {
         return itemId;
     }
 
     /**
-     * 设置商品外键id 商品外键id
+     * 设置商品ID
      *
-     * @param itemId 商品外键id 商品外键id
+     * @param itemId 商品ID
      */
-    public void setItemId(String itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
     /**
-     * 获取图片地址 图片地址
+     * 获取图片地址
      *
-     * @return url - 图片地址 图片地址
+     * @return url - 图片地址
      */
     public String getUrl() {
         return url;
     }
 
     /**
-     * 设置图片地址 图片地址
+     * 设置图片地址
      *
-     * @param url 图片地址 图片地址
+     * @param url 图片地址
      */
     public void setUrl(String url) {
         this.url = url;
     }
 
     /**
-     * 获取顺序 图片顺序，从小到大
+     * 获取图片顺序
      *
-     * @return sort - 顺序 图片顺序，从小到大
+     * @return sort - 图片顺序
      */
     public Integer getSort() {
         return sort;
     }
 
     /**
-     * 设置顺序 图片顺序，从小到大
+     * 设置图片顺序
      *
-     * @param sort 顺序 图片顺序，从小到大
+     * @param sort 图片顺序
      */
     public void setSort(Integer sort) {
         this.sort = sort;
     }
 
     /**
-     * 获取是否主图 是否主图，1：是，0：否
+     * 获取是否主图
      *
-     * @return is_main - 是否主图 是否主图，1：是，0：否
+     * @return is_main - 是否主图
      */
     public Integer getIsMain() {
         return isMain;
     }
 
     /**
-     * 设置是否主图 是否主图，1：是，0：否
+     * 设置是否主图
      *
-     * @param isMain 是否主图 是否主图，1：是，0：否
+     * @param isMain 是否主图
      */
     public void setIsMain(Integer isMain) {
         this.isMain = isMain;
@@ -142,7 +134,7 @@ public class ItemsImg {
      *
      * @return created_time - 创建时间
      */
-    public Date getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
@@ -151,7 +143,7 @@ public class ItemsImg {
      *
      * @param createdTime 创建时间
      */
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 
@@ -160,7 +152,7 @@ public class ItemsImg {
      *
      * @return updated_time - 更新时间
      */
-    public Date getUpdatedTime() {
+    public String getUpdatedTime() {
         return updatedTime;
     }
 
@@ -169,7 +161,7 @@ public class ItemsImg {
      *
      * @param updatedTime 更新时间
      */
-    public void setUpdatedTime(Date updatedTime) {
+    public void setUpdatedTime(String updatedTime) {
         this.updatedTime = updatedTime;
     }
 }

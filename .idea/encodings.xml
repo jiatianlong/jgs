@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jgs-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jgs-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jgs-mapper" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-mapper/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-mapper/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jgs-pojo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-pojo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-pojo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jgs-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgs-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />

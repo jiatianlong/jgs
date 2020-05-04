@@ -1,4 +1,9 @@
-com\jtl\controller\test\StuController.class
-com\jtl\controller\HelloController.class
+com\jtl\aspect\SeiviceLogAspect.class
+com\jtl\controller\carousel\CarouselController.class
+com\jtl\controller\zgarea\ZgAreaController.class
+com\jtl\controller\items\ItemsController.class
 com\jtl\controller\user\PassportController.class
 com\jtl\Application.class
+com\jtl\controller\BaseController.class
+com\jtl\config\CorsConfig.class
+com\jtl\controller\category\CategoryController.class

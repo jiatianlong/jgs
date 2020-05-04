@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jtl.mapper.RidersTakeOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.jtl.pojo.RidersTakeOrder" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="rider_id" property="riderId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="ser_states" property="serStates" jdbcType="VARCHAR" />
+    <result column="receipt_time" property="receiptTime" jdbcType="VARCHAR" />
+    <result column="deliver_time" property="deliverTime" jdbcType="VARCHAR" />
+    <result column="ranger" property="ranger" jdbcType="VARCHAR" />
+    <result column="freight" property="freight" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

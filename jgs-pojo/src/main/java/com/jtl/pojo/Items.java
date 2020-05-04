@@ -2,168 +2,225 @@ package com.jtl.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import java.util.Date;
 
 public class Items {
-    /**
-     * 商品主键id
-     */
     @Id
-    private String id;
+    private Integer id;
 
     /**
-     * 商品名称 商品名称
+     * 店铺ID
+     */
+    @Column(name = "store_shop_id")
+    private Integer storeShopId;
+
+    /**
+     * 商品名称
      */
     @Column(name = "item_name")
     private String itemName;
 
     /**
-     * 分类外键id 分类id
+     * 商品品牌
+     */
+    private String brand;
+
+    /**
+     * 商品分类
      */
     @Column(name = "cat_id")
     private Integer catId;
 
     /**
-     * 一级分类外键id
+     * 商品一级分类
      */
     @Column(name = "root_cat_id")
     private Integer rootCatId;
 
     /**
-     * 累计销售 累计销售
+     * 累计销售
      */
     @Column(name = "sell_counts")
-    private Integer sellCounts;
+    private String sellCounts;
 
     /**
-     * 上下架状态 上下架状态,1:上架 2:下架
+     * 上架状态
      */
     @Column(name = "on_off_status")
-    private Integer onOffStatus;
+    private String onOffStatus;
+
+    /**
+     * 商品内容
+     */
+    private String content;
 
     /**
      * 创建时间
      */
     @Column(name = "created_time")
-    private Date createdTime;
+    private String createdTime;
 
     /**
      * 更新时间
      */
     @Column(name = "updated_time")
-    private Date updatedTime;
+    private String updatedTime;
 
     /**
-     * 商品内容 商品内容
+     * @return id
      */
-    private String content;
-
-    /**
-     * 获取商品主键id
-     *
-     * @return id - 商品主键id
-     */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
-     * 设置商品主键id
-     *
-     * @param id 商品主键id
+     * @param id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 获取商品名称 商品名称
+     * 获取店铺ID
      *
-     * @return item_name - 商品名称 商品名称
+     * @return store_shop_id - 店铺ID
+     */
+    public Integer getStoreShopId() {
+        return storeShopId;
+    }
+
+    /**
+     * 设置店铺ID
+     *
+     * @param storeShopId 店铺ID
+     */
+    public void setStoreShopId(Integer storeShopId) {
+        this.storeShopId = storeShopId;
+    }
+
+    /**
+     * 获取商品名称
+     *
+     * @return item_name - 商品名称
      */
     public String getItemName() {
         return itemName;
     }
 
     /**
-     * 设置商品名称 商品名称
+     * 设置商品名称
      *
-     * @param itemName 商品名称 商品名称
+     * @param itemName 商品名称
      */
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
     /**
-     * 获取分类外键id 分类id
+     * 获取商品品牌
      *
-     * @return cat_id - 分类外键id 分类id
+     * @return brand - 商品品牌
+     */
+    public String getBrand() {
+        return brand;
+    }
+
+    /**
+     * 设置商品品牌
+     *
+     * @param brand 商品品牌
+     */
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    /**
+     * 获取商品分类
+     *
+     * @return cat_id - 商品分类
      */
     public Integer getCatId() {
         return catId;
     }
 
     /**
-     * 设置分类外键id 分类id
+     * 设置商品分类
      *
-     * @param catId 分类外键id 分类id
+     * @param catId 商品分类
      */
     public void setCatId(Integer catId) {
         this.catId = catId;
     }
 
     /**
-     * 获取一级分类外键id
+     * 获取商品一级分类
      *
-     * @return root_cat_id - 一级分类外键id
+     * @return root_cat_id - 商品一级分类
      */
     public Integer getRootCatId() {
         return rootCatId;
     }
 
     /**
-     * 设置一级分类外键id
+     * 设置商品一级分类
      *
-     * @param rootCatId 一级分类外键id
+     * @param rootCatId 商品一级分类
      */
     public void setRootCatId(Integer rootCatId) {
         this.rootCatId = rootCatId;
     }
 
     /**
-     * 获取累计销售 累计销售
+     * 获取累计销售
      *
-     * @return sell_counts - 累计销售 累计销售
+     * @return sell_counts - 累计销售
      */
-    public Integer getSellCounts() {
+    public String getSellCounts() {
         return sellCounts;
     }
 
     /**
-     * 设置累计销售 累计销售
+     * 设置累计销售
      *
-     * @param sellCounts 累计销售 累计销售
+     * @param sellCounts 累计销售
      */
-    public void setSellCounts(Integer sellCounts) {
+    public void setSellCounts(String sellCounts) {
         this.sellCounts = sellCounts;
     }
 
     /**
-     * 获取上下架状态 上下架状态,1:上架 2:下架
+     * 获取上架状态
      *
-     * @return on_off_status - 上下架状态 上下架状态,1:上架 2:下架
+     * @return on_off_status - 上架状态
      */
-    public Integer getOnOffStatus() {
+    public String getOnOffStatus() {
         return onOffStatus;
     }
 
     /**
-     * 设置上下架状态 上下架状态,1:上架 2:下架
+     * 设置上架状态
      *
-     * @param onOffStatus 上下架状态 上下架状态,1:上架 2:下架
+     * @param onOffStatus 上架状态
      */
-    public void setOnOffStatus(Integer onOffStatus) {
+    public void setOnOffStatus(String onOffStatus) {
         this.onOffStatus = onOffStatus;
+    }
+
+    /**
+     * 获取商品内容
+     *
+     * @return content - 商品内容
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * 设置商品内容
+     *
+     * @param content 商品内容
+     */
+    public void setContent(String content) {
+        this.content = content;
     }
 
     /**
@@ -171,7 +228,7 @@ public class Items {
      *
      * @return created_time - 创建时间
      */
-    public Date getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
@@ -180,7 +237,7 @@ public class Items {
      *
      * @param createdTime 创建时间
      */
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 
@@ -189,7 +246,7 @@ public class Items {
      *
      * @return updated_time - 更新时间
      */
-    public Date getUpdatedTime() {
+    public String getUpdatedTime() {
         return updatedTime;
     }
 
@@ -198,25 +255,7 @@ public class Items {
      *
      * @param updatedTime 更新时间
      */
-    public void setUpdatedTime(Date updatedTime) {
+    public void setUpdatedTime(String updatedTime) {
         this.updatedTime = updatedTime;
-    }
-
-    /**
-     * 获取商品内容 商品内容
-     *
-     * @return content - 商品内容 商品内容
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * 设置商品内容 商品内容
-     *
-     * @param content 商品内容 商品内容
-     */
-    public void setContent(String content) {
-        this.content = content;
     }
 }

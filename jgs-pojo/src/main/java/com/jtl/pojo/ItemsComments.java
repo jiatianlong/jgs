@@ -3,27 +3,23 @@ package com.jtl.pojo;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Table(name = "items_comments")
 public class ItemsComments {
-    /**
-     * id主键
-     */
     @Id
-    private String id;
+    private Integer id;
 
     /**
-     * 用户id 用户名须脱敏
+     * 用户id
      */
     @Column(name = "user_id")
-    private String userId;
+    private Integer userId;
 
     /**
      * 商品id
      */
     @Column(name = "item_id")
-    private String itemId;
+    private Integer itemId;
 
     /**
      * 商品名称
@@ -35,7 +31,7 @@ public class ItemsComments {
      * 商品规格id 可为空
      */
     @Column(name = "item_spec_id")
-    private String itemSpecId;
+    private Integer itemSpecId;
 
     /**
      * 规格名称 可为空
@@ -44,7 +40,7 @@ public class ItemsComments {
     private String sepcName;
 
     /**
-     * 评价等级 1：好评 2：中评 3：差评
+     * 评价等级 1好 2中 3差
      */
     @Column(name = "comment_level")
     private Integer commentLevel;
@@ -58,47 +54,43 @@ public class ItemsComments {
      * 创建时间
      */
     @Column(name = "created_time")
-    private Date createdTime;
+    private String createdTime;
 
     /**
      * 更新时间
      */
     @Column(name = "updated_time")
-    private Date updatedTime;
+    private String updatedTime;
 
     /**
-     * 获取id主键
-     *
-     * @return id - id主键
+     * @return id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
-     * 设置id主键
-     *
-     * @param id id主键
+     * @param id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 获取用户id 用户名须脱敏
+     * 获取用户id
      *
-     * @return user_id - 用户id 用户名须脱敏
+     * @return user_id - 用户id
      */
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
     /**
-     * 设置用户id 用户名须脱敏
+     * 设置用户id
      *
-     * @param userId 用户id 用户名须脱敏
+     * @param userId 用户id
      */
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -107,7 +99,7 @@ public class ItemsComments {
      *
      * @return item_id - 商品id
      */
-    public String getItemId() {
+    public Integer getItemId() {
         return itemId;
     }
 
@@ -116,7 +108,7 @@ public class ItemsComments {
      *
      * @param itemId 商品id
      */
-    public void setItemId(String itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
@@ -143,7 +135,7 @@ public class ItemsComments {
      *
      * @return item_spec_id - 商品规格id 可为空
      */
-    public String getItemSpecId() {
+    public Integer getItemSpecId() {
         return itemSpecId;
     }
 
@@ -152,7 +144,7 @@ public class ItemsComments {
      *
      * @param itemSpecId 商品规格id 可为空
      */
-    public void setItemSpecId(String itemSpecId) {
+    public void setItemSpecId(Integer itemSpecId) {
         this.itemSpecId = itemSpecId;
     }
 
@@ -175,18 +167,18 @@ public class ItemsComments {
     }
 
     /**
-     * 获取评价等级 1：好评 2：中评 3：差评
+     * 获取评价等级 1好 2中 3差
      *
-     * @return comment_level - 评价等级 1：好评 2：中评 3：差评
+     * @return comment_level - 评价等级 1好 2中 3差
      */
     public Integer getCommentLevel() {
         return commentLevel;
     }
 
     /**
-     * 设置评价等级 1：好评 2：中评 3：差评
+     * 设置评价等级 1好 2中 3差
      *
-     * @param commentLevel 评价等级 1：好评 2：中评 3：差评
+     * @param commentLevel 评价等级 1好 2中 3差
      */
     public void setCommentLevel(Integer commentLevel) {
         this.commentLevel = commentLevel;
@@ -215,7 +207,7 @@ public class ItemsComments {
      *
      * @return created_time - 创建时间
      */
-    public Date getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
@@ -224,7 +216,7 @@ public class ItemsComments {
      *
      * @param createdTime 创建时间
      */
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 
@@ -233,7 +225,7 @@ public class ItemsComments {
      *
      * @return updated_time - 更新时间
      */
-    public Date getUpdatedTime() {
+    public String getUpdatedTime() {
         return updatedTime;
     }
 
@@ -242,7 +234,7 @@ public class ItemsComments {
      *
      * @param updatedTime 更新时间
      */
-    public void setUpdatedTime(Date updatedTime) {
+    public void setUpdatedTime(String updatedTime) {
         this.updatedTime = updatedTime;
     }
 }

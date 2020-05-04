@@ -20,7 +20,7 @@ spring:
   datasource:                                           # 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource          # 数据源类型：HikariCP
     driver-class-name: com.mysql.jdbc.Driver          # mysql驱动
-    url: jdbc:mysql://localhost:3306/foodie-shop-dev?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    url: jdbc:mysql://localhost:3306/jtl?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
     username: root
     password: root
     hikari:
@@ -40,6 +40,10 @@ mybatis:
     mappers: com.jtl.my.mapper.MyMapper
     not-empty: false    # 在进行数据库操作的的时候，判断表达式 username != null, 是否追加 username != ''
     identity: MYSQL
-logging:
-  level:
-    com.jtl.my.mapper: debug
+  #开启MyBatis日志Sql打印
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 分页插件配置
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true

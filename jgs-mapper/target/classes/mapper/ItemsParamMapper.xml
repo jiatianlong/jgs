@@ -5,8 +5,8 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="item_id" property="itemId" jdbcType="INTEGER" />
     <result column="produc_place" property="producPlace" jdbcType="VARCHAR" />
     <result column="foot_period" property="footPeriod" jdbcType="VARCHAR" />
     <result column="brand" property="brand" jdbcType="VARCHAR" />
@@ -14,9 +14,8 @@
     <result column="factory_address" property="factoryAddress" jdbcType="VARCHAR" />
     <result column="packaging_method" property="packagingMethod" jdbcType="VARCHAR" />
     <result column="weight" property="weight" jdbcType="VARCHAR" />
-    <result column="storage_method" property="storageMethod" jdbcType="VARCHAR" />
-    <result column="eat_method" property="eatMethod" jdbcType="VARCHAR" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="extend" property="extend" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

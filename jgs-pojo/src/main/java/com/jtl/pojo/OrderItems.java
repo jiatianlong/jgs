@@ -6,26 +6,23 @@ import javax.persistence.Table;
 
 @Table(name = "order_items")
 public class OrderItems {
-    /**
-     * 主键id
-     */
     @Id
-    private String id;
+    private Integer id;
 
     /**
-     * 归属订单id
+     * 订单ID
      */
     @Column(name = "order_id")
-    private String orderId;
+    private Integer orderId;
 
     /**
-     * 商品id
+     * 商品ID
      */
     @Column(name = "item_id")
-    private String itemId;
+    private Integer itemId;
 
     /**
-     * 商品图片
+     * 商品图标
      */
     @Column(name = "item_img")
     private String itemImg;
@@ -37,10 +34,10 @@ public class OrderItems {
     private String itemName;
 
     /**
-     * 规格id
+     * 规格ID
      */
     @Column(name = "item_spec_id")
-    private String itemSpecId;
+    private Integer itemSpecId;
 
     /**
      * 规格名称
@@ -51,7 +48,7 @@ public class OrderItems {
     /**
      * 成交价格
      */
-    private Integer price;
+    private Double price;
 
     /**
      * 购买数量
@@ -60,72 +57,68 @@ public class OrderItems {
     private Integer buyCounts;
 
     /**
-     * 获取主键id
-     *
-     * @return id - 主键id
+     * @return id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
-     * 设置主键id
-     *
-     * @param id 主键id
+     * @param id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 获取归属订单id
+     * 获取订单ID
      *
-     * @return order_id - 归属订单id
+     * @return order_id - 订单ID
      */
-    public String getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
     /**
-     * 设置归属订单id
+     * 设置订单ID
      *
-     * @param orderId 归属订单id
+     * @param orderId 订单ID
      */
-    public void setOrderId(String orderId) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
 
     /**
-     * 获取商品id
+     * 获取商品ID
      *
-     * @return item_id - 商品id
+     * @return item_id - 商品ID
      */
-    public String getItemId() {
+    public Integer getItemId() {
         return itemId;
     }
 
     /**
-     * 设置商品id
+     * 设置商品ID
      *
-     * @param itemId 商品id
+     * @param itemId 商品ID
      */
-    public void setItemId(String itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
     /**
-     * 获取商品图片
+     * 获取商品图标
      *
-     * @return item_img - 商品图片
+     * @return item_img - 商品图标
      */
     public String getItemImg() {
         return itemImg;
     }
 
     /**
-     * 设置商品图片
+     * 设置商品图标
      *
-     * @param itemImg 商品图片
+     * @param itemImg 商品图标
      */
     public void setItemImg(String itemImg) {
         this.itemImg = itemImg;
@@ -150,20 +143,20 @@ public class OrderItems {
     }
 
     /**
-     * 获取规格id
+     * 获取规格ID
      *
-     * @return item_spec_id - 规格id
+     * @return item_spec_id - 规格ID
      */
-    public String getItemSpecId() {
+    public Integer getItemSpecId() {
         return itemSpecId;
     }
 
     /**
-     * 设置规格id
+     * 设置规格ID
      *
-     * @param itemSpecId 规格id
+     * @param itemSpecId 规格ID
      */
-    public void setItemSpecId(String itemSpecId) {
+    public void setItemSpecId(Integer itemSpecId) {
         this.itemSpecId = itemSpecId;
     }
 
@@ -190,7 +183,7 @@ public class OrderItems {
      *
      * @return price - 成交价格
      */
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -199,7 +192,7 @@ public class OrderItems {
      *
      * @param price 成交价格
      */
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

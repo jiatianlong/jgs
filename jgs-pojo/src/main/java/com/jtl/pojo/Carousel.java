@@ -2,46 +2,31 @@ package com.jtl.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import java.util.Date;
 
+/**
+ * 图片轮播
+ */
 public class Carousel {
     /**
      * 主键
      */
     @Id
-    private String id;
+    private Integer id;
 
     /**
-     * 图片 图片地址
+     * 图片类型
      */
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column(name = "img_type")
+    private String imgType;
 
     /**
-     * 背景色
+     * 图片地址
      */
-    @Column(name = "background_color")
-    private String backgroundColor;
+    @Column(name = "img_url")
+    private String imgUrl;
 
     /**
-     * 商品id 商品id
-     */
-    @Column(name = "item_id")
-    private String itemId;
-
-    /**
-     * 商品分类id 商品分类id
-     */
-    @Column(name = "cat_id")
-    private String catId;
-
-    /**
-     * 轮播图类型 轮播图类型，用于判断，可以根据商品id或者分类进行页面跳转，1：商品 2：分类
-     */
-    private Integer type;
-
-    /**
-     * 轮播图展示顺序
+     * 图片轮播顺序
      */
     private Integer sort;
 
@@ -52,23 +37,23 @@ public class Carousel {
     private Integer isShow;
 
     /**
-     * 创建时间 创建时间
+     * 创建时间
      */
     @Column(name = "create_time")
-    private Date createTime;
+    private String createTime;
 
     /**
-     * 更新时间 更新
+     * 更新时间
      */
     @Column(name = "update_time")
-    private Date updateTime;
+    private String updateTime;
 
     /**
      * 获取主键
      *
      * @return id - 主键
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -77,113 +62,59 @@ public class Carousel {
      *
      * @param id 主键
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 获取图片 图片地址
+     * 获取图片类型
      *
-     * @return image_url - 图片 图片地址
+     * @return img_type - 图片类型
      */
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImgType() {
+        return imgType;
     }
 
     /**
-     * 设置图片 图片地址
+     * 设置图片类型
      *
-     * @param imageUrl 图片 图片地址
+     * @param imgType 图片类型
      */
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImgType(String imgType) {
+        this.imgType = imgType;
     }
 
     /**
-     * 获取背景色
+     * 获取图片地址
      *
-     * @return background_color - 背景色
+     * @return img_url - 图片地址
      */
-    public String getBackgroundColor() {
-        return backgroundColor;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
     /**
-     * 设置背景色
+     * 设置图片地址
      *
-     * @param backgroundColor 背景色
+     * @param imgUrl 图片地址
      */
-    public void setBackgroundColor(String backgroundColor) {
-        this.backgroundColor = backgroundColor;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     /**
-     * 获取商品id 商品id
+     * 获取图片轮播顺序
      *
-     * @return item_id - 商品id 商品id
-     */
-    public String getItemId() {
-        return itemId;
-    }
-
-    /**
-     * 设置商品id 商品id
-     *
-     * @param itemId 商品id 商品id
-     */
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
-    }
-
-    /**
-     * 获取商品分类id 商品分类id
-     *
-     * @return cat_id - 商品分类id 商品分类id
-     */
-    public String getCatId() {
-        return catId;
-    }
-
-    /**
-     * 设置商品分类id 商品分类id
-     *
-     * @param catId 商品分类id 商品分类id
-     */
-    public void setCatId(String catId) {
-        this.catId = catId;
-    }
-
-    /**
-     * 获取轮播图类型 轮播图类型，用于判断，可以根据商品id或者分类进行页面跳转，1：商品 2：分类
-     *
-     * @return type - 轮播图类型 轮播图类型，用于判断，可以根据商品id或者分类进行页面跳转，1：商品 2：分类
-     */
-    public Integer getType() {
-        return type;
-    }
-
-    /**
-     * 设置轮播图类型 轮播图类型，用于判断，可以根据商品id或者分类进行页面跳转，1：商品 2：分类
-     *
-     * @param type 轮播图类型 轮播图类型，用于判断，可以根据商品id或者分类进行页面跳转，1：商品 2：分类
-     */
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    /**
-     * 获取轮播图展示顺序
-     *
-     * @return sort - 轮播图展示顺序
+     * @return sort - 图片轮播顺序
      */
     public Integer getSort() {
         return sort;
     }
 
     /**
-     * 设置轮播图展示顺序
+     * 设置图片轮播顺序
      *
-     * @param sort 轮播图展示顺序
+     * @param sort 图片轮播顺序
      */
     public void setSort(Integer sort) {
         this.sort = sort;
@@ -208,38 +139,38 @@ public class Carousel {
     }
 
     /**
-     * 获取创建时间 创建时间
+     * 获取创建时间
      *
-     * @return create_time - 创建时间 创建时间
+     * @return create_time - 创建时间
      */
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
     /**
-     * 设置创建时间 创建时间
+     * 设置创建时间
      *
-     * @param createTime 创建时间 创建时间
+     * @param createTime 创建时间
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
     /**
-     * 获取更新时间 更新
+     * 获取更新时间
      *
-     * @return update_time - 更新时间 更新
+     * @return update_time - 更新时间
      */
-    public Date getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
     /**
-     * 设置更新时间 更新
+     * 设置更新时间
      *
-     * @param updateTime 更新时间 更新
+     * @param updateTime 更新时间
      */
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 }

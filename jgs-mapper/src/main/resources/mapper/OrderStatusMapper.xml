@@ -5,13 +5,13 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
-    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
-    <result column="deliver_time" property="deliverTime" jdbcType="TIMESTAMP" />
-    <result column="success_time" property="successTime" jdbcType="TIMESTAMP" />
-    <result column="close_time" property="closeTime" jdbcType="TIMESTAMP" />
-    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+    <result column="order_id" property="orderId" jdbcType="CHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="CHAR" />
+    <result column="created_time" property="createdTime" jdbcType="CHAR" />
+    <result column="pay_time" property="payTime" jdbcType="CHAR" />
+    <result column="deliver_time" property="deliverTime" jdbcType="CHAR" />
+    <result column="success_time" property="successTime" jdbcType="CHAR" />
+    <result column="close_time" property="closeTime" jdbcType="CHAR" />
+    <result column="comment_time" property="commentTime" jdbcType="CHAR" />
   </resultMap>
 </mapper>

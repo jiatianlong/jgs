@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jtl.mapper.StoreCharteredMapper" >
+  <resultMap id="BaseResultMap" type="com.jtl.pojo.StoreChartered" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="credit_card" property="creditCard" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="representative" property="representative" jdbcType="VARCHAR" />
+    <result column="premises" property="premises" jdbcType="VARCHAR" />
+    <result column="license_time" property="licenseTime" jdbcType="VARCHAR" />
+    <result column="reg_time" property="regTime" jdbcType="VARCHAR" />
+    <result column="org_office" property="orgOffice" jdbcType="VARCHAR" />
+    <result column="approval" property="approval" jdbcType="VARCHAR" />
+    <result column="management" property="management" jdbcType="VARCHAR" />
+    <result column="erg_capital" property="ergCapital" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

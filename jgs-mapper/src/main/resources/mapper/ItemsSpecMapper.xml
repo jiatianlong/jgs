@@ -5,14 +5,16 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="item_id" property="itemId" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="stock" property="stock" jdbcType="INTEGER" />
-    <result column="discounts" property="discounts" jdbcType="DECIMAL" />
-    <result column="price_discount" property="priceDiscount" jdbcType="INTEGER" />
-    <result column="price_normal" property="priceNormal" jdbcType="INTEGER" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="discounts" property="discounts" jdbcType="INTEGER" />
+    <result column="price_discount" property="priceDiscount" jdbcType="DOUBLE" />
+    <result column="price_normal" property="priceNormal" jdbcType="DOUBLE" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="extend" property="extend" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

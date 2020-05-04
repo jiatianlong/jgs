@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jtl.mapper.ZgAreaMapperCustom" >
+
+  <resultMap id="myZgAreaVo" type="com.jtl.vo.ZgAreaVo">
+      <id column="id" property="id"  />
+      <result column="name" property="name" />
+      <result column="pId" property="pId"  />
+      <!--
+        collection 标签:用于定义关联的list集合类型的封装规则
+        property：对应三级分类的list属性名
+        ofType：集合的类型，三级分类的Vo
+      -->
+      <collection property="zgGoryList" ofType="com.jtl.vo.ZgAreaGoryVo" >
+          <id column="vid" property="vid"  />
+          <result column="vname" property="vname" />
+          <result column="vfatherId" property="vfatherId"  />
+      </collection>
+
+  </resultMap>
+    
+  <select id="getZgAreaList" resultMap="myZgAreaVo" parameterType="int">
+    select
+        f.id as ID,
+        f.`name` as name,
+        f.pId as pId,
+        c.id as vId,
+        c.`name` as vname,
+        c.pId as vfatherId
+    from
+        zg_area f
+    LEFT JOIN
+        zg_area c
+    ON
+        f.id = c.pId
+    WHERE
+        f.pId = #{rootId}
+  </select>
+
+
+</mapper>

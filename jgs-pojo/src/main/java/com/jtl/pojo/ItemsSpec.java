@@ -3,25 +3,20 @@ package com.jtl.pojo;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.math.BigDecimal;
-import java.util.Date;
 
 @Table(name = "items_spec")
 public class ItemsSpec {
-    /**
-     * 商品规格id
-     */
     @Id
-    private String id;
+    private Integer id;
 
     /**
-     * 商品外键id
+     * 商品ID
      */
     @Column(name = "item_id")
-    private String itemId;
+    private Integer itemId;
 
     /**
-     * 规格名称
+     * 商品名称
      */
     private String name;
 
@@ -33,81 +28,87 @@ public class ItemsSpec {
     /**
      * 折扣力度
      */
-    private BigDecimal discounts;
+    private Integer discounts;
 
     /**
      * 优惠价
      */
     @Column(name = "price_discount")
-    private Integer priceDiscount;
+    private Double priceDiscount;
 
     /**
      * 原价
      */
     @Column(name = "price_normal")
-    private Integer priceNormal;
+    private Double priceNormal;
+
+    /**
+     * 图片
+     */
+    private String url;
+
+    /**
+     * 拓展字段
+     */
+    private String extend;
 
     /**
      * 创建时间
      */
     @Column(name = "created_time")
-    private Date createdTime;
+    private String createdTime;
 
     /**
      * 更新时间
      */
     @Column(name = "updated_time")
-    private Date updatedTime;
+    private String updatedTime;
 
     /**
-     * 获取商品规格id
-     *
-     * @return id - 商品规格id
+     * @return id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
-     * 设置商品规格id
-     *
-     * @param id 商品规格id
+     * @param id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 获取商品外键id
+     * 获取商品ID
      *
-     * @return item_id - 商品外键id
+     * @return item_id - 商品ID
      */
-    public String getItemId() {
+    public Integer getItemId() {
         return itemId;
     }
 
     /**
-     * 设置商品外键id
+     * 设置商品ID
      *
-     * @param itemId 商品外键id
+     * @param itemId 商品ID
      */
-    public void setItemId(String itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
     /**
-     * 获取规格名称
+     * 获取商品名称
      *
-     * @return name - 规格名称
+     * @return name - 商品名称
      */
     public String getName() {
         return name;
     }
 
     /**
-     * 设置规格名称
+     * 设置商品名称
      *
-     * @param name 规格名称
+     * @param name 商品名称
      */
     public void setName(String name) {
         this.name = name;
@@ -136,7 +137,7 @@ public class ItemsSpec {
      *
      * @return discounts - 折扣力度
      */
-    public BigDecimal getDiscounts() {
+    public Integer getDiscounts() {
         return discounts;
     }
 
@@ -145,7 +146,7 @@ public class ItemsSpec {
      *
      * @param discounts 折扣力度
      */
-    public void setDiscounts(BigDecimal discounts) {
+    public void setDiscounts(Integer discounts) {
         this.discounts = discounts;
     }
 
@@ -154,7 +155,7 @@ public class ItemsSpec {
      *
      * @return price_discount - 优惠价
      */
-    public Integer getPriceDiscount() {
+    public Double getPriceDiscount() {
         return priceDiscount;
     }
 
@@ -163,7 +164,7 @@ public class ItemsSpec {
      *
      * @param priceDiscount 优惠价
      */
-    public void setPriceDiscount(Integer priceDiscount) {
+    public void setPriceDiscount(Double priceDiscount) {
         this.priceDiscount = priceDiscount;
     }
 
@@ -172,7 +173,7 @@ public class ItemsSpec {
      *
      * @return price_normal - 原价
      */
-    public Integer getPriceNormal() {
+    public Double getPriceNormal() {
         return priceNormal;
     }
 
@@ -181,8 +182,44 @@ public class ItemsSpec {
      *
      * @param priceNormal 原价
      */
-    public void setPriceNormal(Integer priceNormal) {
+    public void setPriceNormal(Double priceNormal) {
         this.priceNormal = priceNormal;
+    }
+
+    /**
+     * 获取图片
+     *
+     * @return url - 图片
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * 设置图片
+     *
+     * @param url 图片
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * 获取拓展字段
+     *
+     * @return extend - 拓展字段
+     */
+    public String getExtend() {
+        return extend;
+    }
+
+    /**
+     * 设置拓展字段
+     *
+     * @param extend 拓展字段
+     */
+    public void setExtend(String extend) {
+        this.extend = extend;
     }
 
     /**
@@ -190,7 +227,7 @@ public class ItemsSpec {
      *
      * @return created_time - 创建时间
      */
-    public Date getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
@@ -199,7 +236,7 @@ public class ItemsSpec {
      *
      * @param createdTime 创建时间
      */
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 
@@ -208,7 +245,7 @@ public class ItemsSpec {
      *
      * @return updated_time - 更新时间
      */
-    public Date getUpdatedTime() {
+    public String getUpdatedTime() {
         return updatedTime;
     }
 
@@ -217,7 +254,7 @@ public class ItemsSpec {
      *
      * @param updatedTime 更新时间
      */
-    public void setUpdatedTime(Date updatedTime) {
+    public void setUpdatedTime(String updatedTime) {
         this.updatedTime = updatedTime;
     }
 }

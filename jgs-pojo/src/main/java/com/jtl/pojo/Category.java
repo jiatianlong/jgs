@@ -4,9 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 
 public class Category {
-    /**
-     * 主键
-     */
     @Id
     private Integer id;
 
@@ -16,12 +13,7 @@ public class Category {
     private String name;
 
     /**
-     * 分类类型
-     */
-    private Integer type;
-
-    /**
-     * 父id
+     * 父ID
      */
     @Column(name = "father_id")
     private Integer fatherId;
@@ -32,35 +24,25 @@ public class Category {
     private String logo;
 
     /**
-     * 口号
+     * 备注
      */
-    private String slogan;
+    private String note;
 
     /**
-     * 分类图
+     * 创建时间
      */
-    @Column(name = "cat_image")
-    private String catImage;
+    @Column(name = "create_time")
+    private String createTime;
 
     /**
-     * 背景颜色
-     */
-    @Column(name = "bg_color")
-    private String bgColor;
-
-    /**
-     * 获取主键
-     *
-     * @return id - 主键
+     * @return id
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * 设置主键
-     *
-     * @param id 主键
+     * @param id
      */
     public void setId(Integer id) {
         this.id = id;
@@ -85,36 +67,18 @@ public class Category {
     }
 
     /**
-     * 获取分类类型
+     * 获取父ID
      *
-     * @return type - 分类类型
-     */
-    public Integer getType() {
-        return type;
-    }
-
-    /**
-     * 设置分类类型
-     *
-     * @param type 分类类型
-     */
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    /**
-     * 获取父id
-     *
-     * @return father_id - 父id
+     * @return father_id - 父ID
      */
     public Integer getFatherId() {
         return fatherId;
     }
 
     /**
-     * 设置父id
+     * 设置父ID
      *
-     * @param fatherId 父id
+     * @param fatherId 父ID
      */
     public void setFatherId(Integer fatherId) {
         this.fatherId = fatherId;
@@ -139,56 +103,38 @@ public class Category {
     }
 
     /**
-     * 获取口号
+     * 获取备注
      *
-     * @return slogan - 口号
+     * @return note - 备注
      */
-    public String getSlogan() {
-        return slogan;
+    public String getNote() {
+        return note;
     }
 
     /**
-     * 设置口号
+     * 设置备注
      *
-     * @param slogan 口号
+     * @param note 备注
      */
-    public void setSlogan(String slogan) {
-        this.slogan = slogan;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     /**
-     * 获取分类图
+     * 获取创建时间
      *
-     * @return cat_image - 分类图
+     * @return create_time - 创建时间
      */
-    public String getCatImage() {
-        return catImage;
+    public String getCreateTime() {
+        return createTime;
     }
 
     /**
-     * 设置分类图
+     * 设置创建时间
      *
-     * @param catImage 分类图
+     * @param createTime 创建时间
      */
-    public void setCatImage(String catImage) {
-        this.catImage = catImage;
-    }
-
-    /**
-     * 获取背景颜色
-     *
-     * @return bg_color - 背景颜色
-     */
-    public String getBgColor() {
-        return bgColor;
-    }
-
-    /**
-     * 设置背景颜色
-     *
-     * @param bgColor 背景颜色
-     */
-    public void setBgColor(String bgColor) {
-        this.bgColor = bgColor;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }
