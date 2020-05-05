@@ -5,6 +5,7 @@ com\jtl\controller\items\ItemsController.class
 com\jtl\controller\user\PassportController.class
 com\jtl\Application.class
 com\jtl\controller\BaseController.class
+com\jtl\controller\user\UserAddressController.class
 com\jtl\config\CorsConfig.class
 com\jtl\controller\category\CategoryController.class
 com\jtl\controller\shop\ShopCatController.class
