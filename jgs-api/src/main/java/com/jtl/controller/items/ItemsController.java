@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tk.mybatis.mapper.genid.GenId;
 
 import java.util.List;
 
@@ -98,6 +99,54 @@ public class ItemsController extends BaseController {
         }
         PagedGridResult gridResult =
                 itemsService.queryPagedComments(itemId,level,page,pageSize);
+        return JTLJSONResult.ok(gridResult);
+    }
+
+
+    @ApiOperation(value = "搜索商品列表",notes = "根据商品名称关键字(销量，价格)搜索商品列表",httpMethod = "GET")
+    @GetMapping("/search")
+    public JTLJSONResult search(
+            //因为是请求参数,所以使用RequestParam
+            @ApiParam(name = "keywords",value = "商品关键字",required = false) @RequestParam String keywords,
+            @ApiParam(name = "sort",value = "排序,k:默认，代表默认排序,根据name,c:根据销量排序,p:根据价格排序",required = false) @RequestParam String sort,
+            @ApiParam(name = "page",value = "查询下一页的第几页",required = false) @RequestParam Integer page,
+            @ApiParam(name = "pageSize",value = "分页的每一页显示的条数",required = false) @RequestParam Integer pageSize){
+/*
+        if (keywords == null){
+            return JTLJSONResult.errorMsg(null);
+        }*/
+
+        if(page == null){
+            page = 1;
+        }
+        if(pageSize == null){
+            pageSize = PAGE_SIZE;
+        }
+        PagedGridResult gridResult =
+                itemsService.secrchItems(keywords,sort,page,pageSize);
+        return JTLJSONResult.ok(gridResult);
+    }
+
+
+    @ApiOperation(value = "根据二级分类ID搜索商品列表",notes = "根据商品根据二级分类ID搜索关键字(销量，价格)搜索商品列表",httpMethod = "GET")
+    @GetMapping("/searchByTwoCat")
+    public JTLJSONResult searchByTwoCat(
+            //因为是请求参数,所以使用RequestParam
+            @ApiParam(name = "catId",value = "商品关键字",required = true) @RequestParam Integer catId,
+            @ApiParam(name = "sort",value = "排序,k:默认，代表默认排序,根据name,c:根据销量排序,p:根据价格排序",required = false) @RequestParam String sort,
+            @ApiParam(name = "page",value = "查询下一页的第几页",required = false) @RequestParam Integer page,
+            @ApiParam(name = "pageSize",value = "分页的每一页显示的条数",required = false) @RequestParam Integer pageSize){
+        if (catId == null){
+            return JTLJSONResult.errorMsg("商品二级分类ID为空");
+        }
+        if(page == null){
+            page = 1;
+        }
+        if(pageSize == null){
+            pageSize = PAGE_SIZE;
+        }
+        PagedGridResult gridResult =
+                itemsService.secrchItemsByTwoCat(catId,sort,page,pageSize);
         return JTLJSONResult.ok(gridResult);
     }
 

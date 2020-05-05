@@ -6,9 +6,11 @@ import com.jtl.enums.CommentLevel;
 import com.jtl.mapper.*;
 import com.jtl.pojo.*;
 import com.jtl.service.ItemsService;
+import com.jtl.utils.DesensitizationUtil;
 import com.jtl.utils.PagedGridResult;
 import com.jtl.vo.CommentLevelCountsVo;
 import com.jtl.vo.ItemCommentVo;
+import com.jtl.vo.SearchItemsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -152,8 +154,16 @@ public class ItemsServiceImpl implements ItemsService {
          */
         PageHelper.startPage(page,pageSize);
         List<ItemCommentVo> list = itemsMapperCustom.queryItemComments(map);
+        //进行匿名加工
+        for(ItemCommentVo vo:list){
+            vo.setNickName(DesensitizationUtil.commonDisplay(vo.getNickName()));
+        }
+
+
         return setterPagedGrid(list,page);
     }
+
+
 
     private PagedGridResult setterPagedGrid(List<?> list, Integer page) {
         PageInfo<?> pageList = new PageInfo<>(list);
@@ -163,6 +173,46 @@ public class ItemsServiceImpl implements ItemsService {
         grid.setTotal(pageList.getPages());
         grid.setRecords(pageList.getTotal());
         return grid;
+    }
+
+    /**
+     * 搜索商品列表
+     * @param keywords
+     * @param sort
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult secrchItems(String keywords, String sort,
+                                       Integer page, Integer pageSize) {
+        Map<String,Object> paramsMap = new HashMap<>();
+        paramsMap.put("keywords",keywords);
+        paramsMap.put("sort",sort);
+        PageHelper.startPage(page,pageSize);
+        List<SearchItemsVo> list =itemsMapperCustom.secrchItems(paramsMap);
+        return setterPagedGrid(list,page);
+    }
+
+
+    /**
+     * 根据二级分类ID搜索商品列表
+     * @param catId
+     * @param sort
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult secrchItemsByTwoCat(Integer catId, String sort, Integer page, Integer pageSize) {
+        Map<String,Object> paramsMap = new HashMap<>();
+        paramsMap.put("catId",catId);
+        paramsMap.put("sort",sort);
+        PageHelper.startPage(page,pageSize);
+        List<SearchItemsVo> list =itemsMapperCustom.secrchItems(paramsMap);
+        return setterPagedGrid(list,page);
     }
 
 }

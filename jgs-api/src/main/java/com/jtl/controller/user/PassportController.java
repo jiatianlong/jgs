@@ -99,6 +99,8 @@ public class PassportController {
         CookieUtils.setCookie(request,response,"user",
                 JsonUtils.objectToJson(users),true);
 
+        //TODO 生成用户token，存入redis会话
+        //TODO 用户购物车更新
 
 
         return JTLJSONResult.ok(users);

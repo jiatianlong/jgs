@@ -7,3 +7,4 @@ com\jtl\Application.class
 com\jtl\controller\BaseController.class
 com\jtl\config\CorsConfig.class
 com\jtl\controller\category\CategoryController.class
+com\jtl\controller\shop\ShopCatController.class
