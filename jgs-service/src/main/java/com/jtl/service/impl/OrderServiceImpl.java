@@ -5,7 +5,6 @@ import com.jtl.enums.OrderStatusEnum;
 import com.jtl.enums.YesOrNo;
 import com.jtl.mapper.*;
 import com.jtl.pojo.*;
-import com.jtl.service.CarouselService;
 import com.jtl.service.ItemsService;
 import com.jtl.service.OrderService;
 import com.jtl.service.UserAddressService;
@@ -13,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import tk.mybatis.mapper.entity.Example;
-
 import java.util.Date;
-import java.util.List;
+
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -130,16 +127,16 @@ public class OrderServiceImpl implements OrderService {
             orderItemsMapper.insert(subOrderItem);
 
             //2.4在用户提交订单以后，规格表中需要扣除库存
-
+           /* itemsService.decreaseItemSpecStock(itemSpecId, buyCounts);*/
         }
 
 
         //3.保存订单状态表
-        /*OrderStatus waitPayOrderStatus = new OrderStatus();
-        waitPayOrderStatus.setOrderId(String.valueOf(orderId));
+        OrderStatus waitPayOrderStatus = new OrderStatus();
+        waitPayOrderStatus.setOrderId(orderId);
         waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_PAY.type);
         waitPayOrderStatus.setCreatedTime(new Date());
-        orderStatusMapper.insert(waitPayOrderStatus);*/
+        orderStatusMapper.insert(waitPayOrderStatus);
 
     }
 

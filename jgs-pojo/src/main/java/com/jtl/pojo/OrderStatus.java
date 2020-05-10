@@ -1,7 +1,7 @@
 package com.jtl.pojo;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import java.util.Date;
+import javax.persistence.*;
 
 @Table(name = "order_status")
 public class OrderStatus {
@@ -9,56 +9,56 @@ public class OrderStatus {
      * 订单ID
      */
     @Column(name = "order_id")
-    private String orderId;
+    private Integer orderId;
 
     /**
      * 订单状态
      */
     @Column(name = "order_status")
-    private String orderStatus;
+    private Integer orderStatus;
 
     /**
      * 订单创建时间
      */
     @Column(name = "created_time")
-    private String createdTime;
+    private Date createdTime;
 
     /**
      * 支付成功时间
      */
     @Column(name = "pay_time")
-    private String payTime;
+    private Date payTime;
 
     /**
      * 发货时间
      */
     @Column(name = "deliver_time")
-    private String deliverTime;
+    private Date deliverTime;
 
     /**
      * 交易成功时间
      */
     @Column(name = "success_time")
-    private String successTime;
+    private Date successTime;
 
     /**
      * 交易关闭时间
      */
     @Column(name = "close_time")
-    private String closeTime;
+    private Date closeTime;
 
     /**
      * 留言时间
      */
     @Column(name = "comment_time")
-    private String commentTime;
+    private Date commentTime;
 
     /**
      * 获取订单ID
      *
      * @return order_id - 订单ID
      */
-    public String getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
@@ -67,7 +67,7 @@ public class OrderStatus {
      *
      * @param orderId 订单ID
      */
-    public void setOrderId(String orderId) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
 
@@ -76,7 +76,7 @@ public class OrderStatus {
      *
      * @return order_status - 订单状态
      */
-    public String getOrderStatus() {
+    public Integer getOrderStatus() {
         return orderStatus;
     }
 
@@ -85,7 +85,7 @@ public class OrderStatus {
      *
      * @param orderStatus 订单状态
      */
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
     }
 
@@ -94,7 +94,7 @@ public class OrderStatus {
      *
      * @return created_time - 订单创建时间
      */
-    public String getCreatedTime() {
+    public Date getCreatedTime() {
         return createdTime;
     }
 
@@ -103,7 +103,7 @@ public class OrderStatus {
      *
      * @param createdTime 订单创建时间
      */
-    public void setCreatedTime(String createdTime) {
+    public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
     }
 
@@ -112,7 +112,7 @@ public class OrderStatus {
      *
      * @return pay_time - 支付成功时间
      */
-    public String getPayTime() {
+    public Date getPayTime() {
         return payTime;
     }
 
@@ -121,7 +121,7 @@ public class OrderStatus {
      *
      * @param payTime 支付成功时间
      */
-    public void setPayTime(String payTime) {
+    public void setPayTime(Date payTime) {
         this.payTime = payTime;
     }
 
@@ -130,7 +130,7 @@ public class OrderStatus {
      *
      * @return deliver_time - 发货时间
      */
-    public String getDeliverTime() {
+    public Date getDeliverTime() {
         return deliverTime;
     }
 
@@ -139,7 +139,7 @@ public class OrderStatus {
      *
      * @param deliverTime 发货时间
      */
-    public void setDeliverTime(String deliverTime) {
+    public void setDeliverTime(Date deliverTime) {
         this.deliverTime = deliverTime;
     }
 
@@ -148,7 +148,7 @@ public class OrderStatus {
      *
      * @return success_time - 交易成功时间
      */
-    public String getSuccessTime() {
+    public Date getSuccessTime() {
         return successTime;
     }
 
@@ -157,7 +157,7 @@ public class OrderStatus {
      *
      * @param successTime 交易成功时间
      */
-    public void setSuccessTime(String successTime) {
+    public void setSuccessTime(Date successTime) {
         this.successTime = successTime;
     }
 
@@ -166,7 +166,7 @@ public class OrderStatus {
      *
      * @return close_time - 交易关闭时间
      */
-    public String getCloseTime() {
+    public Date getCloseTime() {
         return closeTime;
     }
 
@@ -175,7 +175,7 @@ public class OrderStatus {
      *
      * @param closeTime 交易关闭时间
      */
-    public void setCloseTime(String closeTime) {
+    public void setCloseTime(Date closeTime) {
         this.closeTime = closeTime;
     }
 
@@ -184,7 +184,7 @@ public class OrderStatus {
      *
      * @return comment_time - 留言时间
      */
-    public String getCommentTime() {
+    public Date getCommentTime() {
         return commentTime;
     }
 
@@ -193,7 +193,7 @@ public class OrderStatus {
      *
      * @param commentTime 留言时间
      */
-    public void setCommentTime(String commentTime) {
+    public void setCommentTime(Date commentTime) {
         this.commentTime = commentTime;
     }
 }
