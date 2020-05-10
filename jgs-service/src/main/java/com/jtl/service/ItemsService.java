@@ -85,4 +85,16 @@ public interface ItemsService {
                                        Integer pageSize);
 
 
+    /**
+     * 根据商品规格ID获取规格对象具体信息
+     * @return
+     */
+    public ItemsSpec queryItemSpecById(Integer id);
+
+    /**
+     * 根据商品ID获取商品主图url
+     * @return
+     */
+    public String queryItemMainImgById(Integer id);
+
 }

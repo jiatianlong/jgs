@@ -3,6 +3,7 @@ package com.jtl.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jtl.enums.CommentLevel;
+import com.jtl.enums.YesOrNo;
 import com.jtl.mapper.*;
 import com.jtl.pojo.*;
 import com.jtl.service.ItemsService;
@@ -213,6 +214,26 @@ public class ItemsServiceImpl implements ItemsService {
         PageHelper.startPage(page,pageSize);
         List<SearchItemsVo> list =itemsMapperCustom.secrchItems(paramsMap);
         return setterPagedGrid(list,page);
+    }
+
+    /**
+     * 根据商品规格ID获取规格对象具体信息
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public ItemsSpec queryItemSpecById(Integer id) {
+        return itemsSpecMapper.selectByPrimaryKey(id);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public String queryItemMainImgById(Integer id) {
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(id);
+        itemsImg.setIsMain(YesOrNo.YES.type);
+        ItemsImg result =itemsImgMapper.selectOne(itemsImg);
+        return result != null ? result.getUrl() : "";
     }
 
 }

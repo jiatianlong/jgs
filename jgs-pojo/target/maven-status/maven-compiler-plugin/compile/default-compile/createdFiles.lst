@@ -20,4 +20,5 @@ com\jtl\pojo\ItemsImg.class
 com\jtl\pojo\ItemsComments.class
 com\jtl\pojo\Items.class
 com\jtl\pojo\ZgArea.class
+com\jtl\bo\AddressBO.class
 com\jtl\pojo\ItemsParam.class
