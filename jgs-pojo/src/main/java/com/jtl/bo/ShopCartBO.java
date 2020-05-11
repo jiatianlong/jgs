@@ -1,15 +1,27 @@
 package com.jtl.bo;
 
+/**
+ * 购物车BO
+ */
 public class ShopCartBO {
 
+    //用户ID
     private Integer userId;
+    //商品ID
     private Integer itemId;
+    //商品图地址
     private String itemImgUrl;
+    //商品名称
     private String itemName;
+    //商品规格
     private String specId;
+    //规格名称
     private String specName;
+    //购买数量
     private Integer byCounts;
+    //价格折扣
     private String priceDiscount;
+    //正常价格
     private String priceNormal;
 
     public Integer getUserId() {
@@ -23,7 +35,6 @@ public class ShopCartBO {
     public Integer getItemId() {
         return itemId;
     }
-
 
     public void setItemId(Integer itemId) {
         this.itemId = itemId;

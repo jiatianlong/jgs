@@ -1,20 +1,18 @@
 package com.jtl.controller.items;
 
 import com.jtl.controller.BaseController;
-import com.jtl.enums.YesOrNo;
 import com.jtl.pojo.*;
-import com.jtl.service.CarouselService;
 import com.jtl.service.ItemsService;
 import com.jtl.utils.JTLJSONResult;
 import com.jtl.utils.PagedGridResult;
 import com.jtl.vo.CommentLevelCountsVo;
 import com.jtl.vo.ItemsInfoVo;
+import com.jtl.bo.ItemsOrSpecOrImgBO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tk.mybatis.mapper.genid.GenId;
 
 import java.util.List;
 
@@ -28,6 +26,13 @@ public class ItemsController extends BaseController {
 
     @Autowired
     private ItemsService itemsService;
+
+    @ApiOperation(value = "查询所有商品",notes = "查询所有商品,关联商品表和商品规格表",httpMethod = "GET")
+    @GetMapping("/qreryAllList")
+    public JTLJSONResult qreryAllList(){
+        List<ItemsOrSpecOrImgBO> items = itemsService.qreryAllList();
+        return JTLJSONResult.ok(items);
+    }
 
     @ApiOperation(value = "查询商品详情",notes = "查询商品详情",httpMethod = "GET")
     @GetMapping("/info/{itemId}")

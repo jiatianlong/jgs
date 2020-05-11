@@ -4,6 +4,7 @@ com\jtl\controller\zgarea\ZgAreaController.class
 com\jtl\controller\items\ItemsController.class
 com\jtl\controller\user\PassportController.class
 com\jtl\Application.class
+com\jtl\config\Swagger2.class
 com\jtl\controller\BaseController.class
 com\jtl\controller\user\UserAddressController.class
 com\jtl\config\CorsConfig.class
