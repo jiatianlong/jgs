@@ -2,7 +2,6 @@ package com.jtl.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import java.util.Date;
 
 public class Orders {
     @Id
@@ -107,13 +106,13 @@ public class Orders {
      * 创建时间
      */
     @Column(name = "created_time")
-    private Date createdTime;
+    private String createdTime;
 
     /**
      * 更新时间
      */
     @Column(name = "updated_time")
-    private Date updatedTime;
+    private String updatedTime;
 
     /**
      * @return id
@@ -417,19 +416,39 @@ public class Orders {
         this.orderTypeRider = orderTypeRider;
     }
 
-    public Date getCreatedTime() {
+    /**
+     * 获取创建时间
+     *
+     * @return created_time - 创建时间
+     */
+    public String getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Date createdTime) {
+    /**
+     * 设置创建时间
+     *
+     * @param createdTime 创建时间
+     */
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 
-    public Date getUpdatedTime() {
+    /**
+     * 获取更新时间
+     *
+     * @return updated_time - 更新时间
+     */
+    public String getUpdatedTime() {
         return updatedTime;
     }
 
-    public void setUpdatedTime(Date updatedTime) {
+    /**
+     * 设置更新时间
+     *
+     * @param updatedTime 更新时间
+     */
+    public void setUpdatedTime(String updatedTime) {
         this.updatedTime = updatedTime;
     }
 }

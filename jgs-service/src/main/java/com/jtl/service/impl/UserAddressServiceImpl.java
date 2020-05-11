@@ -112,19 +112,5 @@ public class UserAddressServiceImpl implements UserAddressService {
         userAddressMapper.updateByPrimaryKeySelective(queryAddress);
     }
 
-    /**
-     * 根据用户ID和收货地址ID查询用户地址信息
-     * @param id
-     */
-    @Transactional(propagation = Propagation.SUPPORTS)
-    @Override
-    public UserAddress queryUserAddres(Integer id, Integer userId) {
-
-        UserAddress singleAddress = new UserAddress();
-        singleAddress.setId(id);
-        singleAddress.setUserId(userId);
-        return userAddressMapper.selectOne(singleAddress);
-    }
-
 
 }

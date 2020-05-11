@@ -5,21 +5,27 @@ import io.swagger.annotations.ApiModelProperty;
 public class ItemsOrSpecOrImgBO {
 
     //ID
+    @ApiModelProperty(value = "ID",name = "id")
     private Integer id;
 
     //商品名称
+    @ApiModelProperty(value = "商品名称",name = "itemName")
     private String itemName;
 
     //商品内容
+    @ApiModelProperty(value = "商品内容",name = "itemContent")
     private String itemContent;
 
     //商品优惠价格
+    @ApiModelProperty(value = "商品优惠价格",name = "priceDiscount")
     private Double priceDiscount;
 
     //图片地址
+    @ApiModelProperty(value = "图片地址",name = "url")
     private String url;
 
     //累计销售
+    @ApiModelProperty(value = "累计销售",name = "sellCounts")
     private String sellCounts;
 
 
