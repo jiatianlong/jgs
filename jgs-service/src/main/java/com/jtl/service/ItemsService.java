@@ -3,7 +3,7 @@ package com.jtl.service;
 import com.jtl.pojo.*;
 import com.jtl.utils.PagedGridResult;
 import com.jtl.vo.CommentLevelCountsVo;
-import com.jtl.bo.ItemsOrSpecOrImgBO;
+import com.jtl.vo.ItemCommentVo;
 
 import java.util.List;
 
@@ -86,9 +86,23 @@ public interface ItemsService {
 
 
     /**
-     * 查询所有商品,显示的时候默认显示规格第一个
+     * 根据商品规格ID获取规格对象具体信息
      * @return
      */
-    public List<ItemsOrSpecOrImgBO> qreryAllList();
+    public ItemsSpec queryItemSpecById(Integer id);
+
+    /**
+     * 根据商品ID获取商品主图url
+     * @return
+     */
+    public String queryItemMainImgById(Integer id);
+
+    /**
+     * 减少库存
+     * @param specId
+     * @param buyCounts
+     */
+    public void decreaseItemSpecStock(String specId, int buyCounts);
+
 
 }

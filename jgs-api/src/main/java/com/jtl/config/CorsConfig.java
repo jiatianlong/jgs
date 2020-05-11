@@ -6,7 +6,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-/*@Configuration*/
+@Configuration
 public class CorsConfig {
 
     public CorsConfig(){
@@ -18,7 +18,7 @@ public class CorsConfig {
         //1.添加cors配置信息
         CorsConfiguration config = new CorsConfiguration();
         //设置允许请求的服务器地址
-        config.addAllowedOrigin("*");
+        config.addAllowedOrigin("http://127.0.0.1:8848");
 
         //设置是否发送cookie信息
         config.setAllowCredentials(true);

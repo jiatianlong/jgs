@@ -42,5 +42,10 @@ public interface UserAddressService {
      */
     public void updateUserAddressToBefault(Integer id,Integer userId);
 
+    /**
+     * 根据用户ID和收货地址ID查询用户地址信息
+     * @param id
+     */
+    public  UserAddress queryUserAddres(Integer id,Integer userId);
 
 }

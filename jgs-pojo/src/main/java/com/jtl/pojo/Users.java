@@ -1,5 +1,7 @@
 package com.jtl.pojo;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.util.Date;
@@ -8,63 +10,75 @@ public class Users {
     /**
      * 主键id 用户id
      */
+    @ApiModelProperty(value = "用户ID",name = "id",example = "1",required = true)
     @Id
     private String id;
 
     /**
      * 用户名 用户名
      */
+    @ApiModelProperty(value = "用户名",name = "username",example = "jtl",required = false)
     private String username;
 
     /**
      * 密码 密码
      */
+    @ApiModelProperty(value = "密码",name = "password",example = "123456",required = false)
     private String password;
 
     /**
      * 昵称 昵称
      */
+    @ApiModelProperty(value = "昵称",name = "nickname",example = "jtl",required = false)
     private String nickname;
 
     /**
      * 真实姓名
      */
+    @ApiModelProperty(value = "真实姓名",name = "realname",example = "jtl",required = false)
     private String realname;
 
     /**
      * 头像
      */
+    @ApiModelProperty(value = "头像",name = "face",example = "图片地址",required = false)
     private String face;
 
     /**
      * 手机号 手机号
      */
+    @ApiModelProperty(value = "手机号",name = "mobile",example = "13309470000",required = false)
     private String mobile;
 
     /**
      * 邮箱地址 邮箱地址
      */
+    @ApiModelProperty(value = "邮箱地址",name = "email",example = "13309470000@163.com",required = false)
     private String email;
 
     /**
      * 性别 性别 1:男  0:女  2:保密
      */
+    @ApiModelProperty(value = "邮箱地址",name = "sex",example = "1/2/0",required = false)
     private Integer sex;
 
     /**
      * 生日 生日
      */
+    @ApiModelProperty(value = "生日",name = "birthday",example = "2020-01-01",required = false)
     private Date birthday;
 
     /**
      * 创建时间 创建时间
      */
+    @ApiModelProperty(value = "创建时间",name = "createdTime",example = "2020-01-01",required = false)
     @Column(name = "created_time")
     private Date createdTime;
 
     /**
      * 更新时间 更新时间
      */
+    @ApiModelProperty(value = "更新时间",name = "updatedTime",example = "2020-01-01",required = false)
     @Column(name = "updated_time")
     private Date updatedTime;
 

@@ -3,6 +3,7 @@ package com.jtl.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jtl.enums.CommentLevel;
+import com.jtl.enums.YesOrNo;
 import com.jtl.mapper.*;
 import com.jtl.pojo.*;
 import com.jtl.service.ItemsService;
@@ -10,7 +11,6 @@ import com.jtl.utils.DesensitizationUtil;
 import com.jtl.utils.PagedGridResult;
 import com.jtl.vo.CommentLevelCountsVo;
 import com.jtl.vo.ItemCommentVo;
-import com.jtl.bo.ItemsOrSpecOrImgBO;
 import com.jtl.vo.SearchItemsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -217,42 +216,58 @@ public class ItemsServiceImpl implements ItemsService {
         return setterPagedGrid(list,page);
     }
 
+    /**
+     * 根据商品规格ID获取规格对象具体信息
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
-    public List<ItemsOrSpecOrImgBO> qreryAllList() {
-        Example example = new Example(Items.class);
-        Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("onOffStatus",1);
-        List<Items> list = itemsMapper.selectByExample(example);
-
-        List<ItemsOrSpecOrImgBO> items = new ArrayList<>();
-
-        Integer id;
-        String itemName;
-        //商品内容
-        String itemContent;
-        //销量
-        String sellCounts;
-        //商品优惠价格
-        double priceDiscount;
-        //图片地址
-        String url;
-
-        for (int i = 0;i<list.size();i++){
-            id = list.get(i).getId();
-            itemName = list.get(i).getItemName();
-            itemContent = list.get(i).getContent();
-            sellCounts = list.get(i).getSellCounts();
-            List<ItemsSpec> specs = this.queryItemSpecList(id);
-            priceDiscount = specs.get(0).getPriceDiscount();
-            url = specs.get(0).getUrl();
-            items.add(new ItemsOrSpecOrImgBO(id,itemName,itemContent,sellCounts,priceDiscount,url));
-        }
-
-
-        return items;
+    public ItemsSpec queryItemSpecById(Integer id) {
+        return itemsSpecMapper.selectByPrimaryKey(id);
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public String queryItemMainImgById(Integer id) {
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(id);
+        itemsImg.setIsMain(YesOrNo.YES.type);
+        ItemsImg result =itemsImgMapper.selectOne(itemsImg);
+        return result != null ? result.getUrl() : "";
+    }
 
+    /**
+     * 减少库存
+     * @param specId
+     * @param buyCounts
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void decreaseItemSpecStock(String specId, int buyCounts) {
+
+        // synchronized 不推荐使用，集群下无用，性能低下
+        // 锁数据库: 不推荐，导致数据库性能低下
+        // 分布式锁 zookeeper redis
+
+        // lockUtil.getLock(); -- 加锁
+
+        // 1. 查询库存
+//        int stock = 10;
+
+        // 2. 判断库存，是否能够减少到0以下
+//        if (stock - buyCounts < 0) {
+        // 提示用户库存不够
+//            10 - 3 -3 - 5 = -1
+//        }
+
+        // lockUtil.unLock(); -- 解锁
+
+
+        int result = itemsMapperCustom.decreaseItemSpecStock(specId, buyCounts);
+        if (result != 1) {
+            throw new RuntimeException("订单创建失败，原因：库存不足!");
+        }
+    }
 
 
 }
