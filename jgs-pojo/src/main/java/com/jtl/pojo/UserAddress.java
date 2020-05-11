@@ -22,6 +22,11 @@ public class UserAddress {
     private String receiver;
 
     /**
+     * 收件人电话
+     */
+    private String mobile;
+
+    /**
      * 省份
      */
     private String province;
@@ -112,6 +117,19 @@ public class UserAddress {
      */
     public void setReceiver(String receiver) {
         this.receiver = receiver;
+    }
+
+
+    /**
+     * 设置收件人电话
+     * @return
+     */
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     /**

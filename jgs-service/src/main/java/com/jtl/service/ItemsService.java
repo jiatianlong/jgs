@@ -3,7 +3,7 @@ package com.jtl.service;
 import com.jtl.pojo.*;
 import com.jtl.utils.PagedGridResult;
 import com.jtl.vo.CommentLevelCountsVo;
-import com.jtl.bo.ItemsOrSpecOrImgBO;
+import com.jtl.vo.ItemCommentVo;
 
 import java.util.List;
 
@@ -84,11 +84,5 @@ public interface ItemsService {
                                        Integer page,
                                        Integer pageSize);
 
-
-    /**
-     * 查询所有商品,显示的时候默认显示规格第一个
-     * @return
-     */
-    public List<ItemsOrSpecOrImgBO> qreryAllList();
 
 }
