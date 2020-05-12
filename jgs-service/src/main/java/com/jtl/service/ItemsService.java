@@ -1,5 +1,6 @@
 package com.jtl.service;
 
+import com.jtl.bo.ItemsOrSpecOrImgBO;
 import com.jtl.pojo.*;
 import com.jtl.utils.PagedGridResult;
 import com.jtl.vo.CommentLevelCountsVo;
@@ -103,6 +104,14 @@ public interface ItemsService {
      * @param buyCounts
      */
     public void decreaseItemSpecStock(String specId, int buyCounts);
+
+
+    /**
+     * 查询所有商品,显示的时候默认显示规格第一个
+     * @return
+     */
+    public List<ItemsOrSpecOrImgBO> qreryAllList();
+
 
 
 }

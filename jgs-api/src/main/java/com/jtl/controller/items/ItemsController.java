@@ -1,5 +1,6 @@
 package com.jtl.controller.items;
 
+import com.jtl.bo.ItemsOrSpecOrImgBO;
 import com.jtl.controller.BaseController;
 import com.jtl.enums.YesOrNo;
 import com.jtl.pojo.*;
@@ -28,6 +29,13 @@ public class ItemsController extends BaseController {
 
     @Autowired
     private ItemsService itemsService;
+
+    @ApiOperation(value = "查询所有商品",notes = "查询所有商品,关联商品表和商品规格表",httpMethod = "GET")
+    @GetMapping("/qreryAllList")
+    public JTLJSONResult qreryAllList(){
+        List<ItemsOrSpecOrImgBO> items = itemsService.qreryAllList();
+        return JTLJSONResult.ok(items);
+    }
 
     @ApiOperation(value = "查询商品详情",notes = "查询商品详情",httpMethod = "GET")
     @GetMapping("/info/{itemId}")
