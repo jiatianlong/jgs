@@ -37,6 +37,17 @@ public class ItemsController extends BaseController {
         return JTLJSONResult.ok(items);
     }
 
+
+    @ApiOperation(value = "根据商家ID查询商品",notes = "根据商家ID查询商品,关联商品表和商品规格表",httpMethod = "POST")
+    @PostMapping("/qreryAllByStoreId")
+    public JTLJSONResult qreryAllByStoreId(
+            @ApiParam(name = "storeId",value = "商家ID",required = true)
+            @RequestParam Integer storeId){
+        List<ItemsOrSpecOrImgBO> items = itemsService.queryItemsByStore(storeId);
+        return JTLJSONResult.ok(items);
+    }
+
+
     @ApiOperation(value = "查询商品详情",notes = "查询商品详情",httpMethod = "GET")
     @GetMapping("/info/{itemId}")
     public JTLJSONResult info(

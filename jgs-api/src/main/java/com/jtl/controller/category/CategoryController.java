@@ -2,6 +2,7 @@ package com.jtl.controller.category;
 
 import com.jtl.enums.YesOrNo;
 import com.jtl.pojo.Carousel;
+import com.jtl.pojo.Category;
 import com.jtl.service.CarouselService;
 import com.jtl.service.CategoryService;
 import com.jtl.utils.JTLJSONResult;
@@ -28,6 +29,8 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+
+
     @ApiOperation(value = "查询一级分类下的6条最新商品数据",notes = "查询一级分类下的6条最新商品数据",httpMethod = "GET")
     @GetMapping("/SixNewItems/{rootId}")
     public JTLJSONResult SixNewItems(
@@ -41,5 +44,13 @@ public class CategoryController {
     }
 
 
+    @ApiOperation(value = "获取所有商品分类",notes = "获取所有商品分类",httpMethod = "GET")
+    @GetMapping("/queryAll")
+    public JTLJSONResult queryAll(){
+        List<Category> list = categoryService.queryAll();
+        return JTLJSONResult.ok(list);
+    }
+
+    
 
 }

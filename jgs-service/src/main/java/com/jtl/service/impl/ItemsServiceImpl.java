@@ -280,6 +280,7 @@ public class ItemsServiceImpl implements ItemsService {
 
         List<ItemsOrSpecOrImgBO> items = new ArrayList<>();
 
+
         Integer id;
         String itemName;
         //商品内容
@@ -301,6 +302,45 @@ public class ItemsServiceImpl implements ItemsService {
             url = specs.get(0).getUrl();
             items.add(new ItemsOrSpecOrImgBO(id,itemName,itemContent,sellCounts,priceDiscount,url));
         }
+        return items;
+    }
+
+    @Override
+    public List<ItemsOrSpecOrImgBO> queryItemsByStore(Integer storeId) {
+
+        Example example = new Example(Items.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("storeShopId",storeId);
+        criteria.andEqualTo("onOffStatus",1);
+        //查询商家所拥有的上架的商品
+        List<Items> list = itemsMapper.selectByExample(example);
+
+        List<ItemsOrSpecOrImgBO> items = new ArrayList<>();
+
+        //商品ID
+        Integer id;
+        //商品名称
+        String itemName;
+        //商品内容
+        String itemContent;
+        //销量
+        String sellCounts;
+        //商品优惠价格
+        double priceDiscount;
+        //图片地址
+        String url;
+
+        for (int i = 0;i<list.size();i++){
+            id = list.get(i).getId();
+            itemName = list.get(i).getItemName();
+            itemContent = list.get(i).getContent();
+            sellCounts = list.get(i).getSellCounts();
+            List<ItemsSpec> specs = this.queryItemSpecList(id);
+            priceDiscount = specs.get(0).getPriceDiscount();
+            url = specs.get(0).getUrl();
+            items.add(new ItemsOrSpecOrImgBO(id,itemName,itemContent,sellCounts,priceDiscount,url));
+        }
+
         return items;
     }
 

@@ -1,5 +1,6 @@
 package com.jtl.service;
 
+import com.jtl.pojo.Category;
 import com.jtl.vo.NewItemsVo;
 
 import java.util.List;
@@ -16,5 +17,11 @@ public interface CategoryService  {
      */
     public List<NewItemsVo> getSixNewItemsLazy(Integer rootId);
 
+
+    /**
+     * 获取所有的分类
+     * @return
+     */
+    public List<Category> queryAll();
 
 }

@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ItemsOrSpecOrImgBO {
 
-    //ID
+    //商品ID
     @ApiModelProperty(value = "ID",name = "id")
     private Integer id;
 

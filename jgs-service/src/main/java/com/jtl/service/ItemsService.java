@@ -113,5 +113,12 @@ public interface ItemsService {
     public List<ItemsOrSpecOrImgBO> qreryAllList();
 
 
+    /**
+     * 根据商家ID查询商品
+     * @return
+     */
+    public List<ItemsOrSpecOrImgBO> queryItemsByStore(Integer storeId);
+
+
 
 }

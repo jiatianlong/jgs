@@ -58,6 +58,7 @@ public class UsersController extends BaseController {
                     MultipartFile file,
             HttpServletRequest request, HttpServletResponse response) {
 
+
         // 上传的头像最终保存的位置
         String finalFacePath=null;
         // 定义头像保存的地址
