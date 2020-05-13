@@ -1,4 +1,4 @@
-package com.jtl.pojo;
+package com.jtl.bo;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -6,10 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.util.Date;
 
-public class Category {
-
-    @Id
-    private Integer id;
+public class CategoryBO {
 
     /**
      * 分类名称
@@ -36,26 +33,6 @@ public class Category {
     @ApiModelProperty(value = "备注",name = "note",example = "1",required = false)
     private String note;
 
-    /**
-     * 创建时间
-     */
-    @ApiModelProperty(value = "创建时间",name = "createTime",example = "1",required = false)
-    @Column(name = "create_time")
-    private Date createTime;
-
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     /**
      * 获取分类名称
@@ -129,12 +106,4 @@ public class Category {
         this.note = note;
     }
 
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }

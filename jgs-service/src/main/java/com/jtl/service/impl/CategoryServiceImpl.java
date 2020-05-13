@@ -1,5 +1,6 @@
 package com.jtl.service.impl;
 
+import com.jtl.bo.CategoryBO;
 import com.jtl.mapper.CategoryMapper;
 import com.jtl.mapper.CategoryMapperCustom;
 import com.jtl.pojo.Category;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,5 +48,23 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> queryAll() {
         return categoryMapper.selectAll();
     }
+
+    /**
+     * 添加商品分类
+     * @param categoryBO
+     */
+    @Override
+    public void addNewCategory(CategoryBO categoryBO) {
+        Category category = new Category();
+        category.setName(categoryBO.getName());
+        category.setFatherId(categoryBO.getFatherId());
+        category.setNote(categoryBO.getNote());
+        category.setLogo(categoryBO.getLogo());
+        category.setCreateTime(new Date());
+        categoryMapper.insert(category);
+    }
+
+
+
 
 }

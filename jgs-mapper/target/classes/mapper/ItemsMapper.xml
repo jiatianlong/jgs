@@ -14,7 +14,7 @@
     <result column="sell_counts" property="sellCounts" jdbcType="VARCHAR" />
     <result column="on_off_status" property="onOffStatus" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
-    <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
 </mapper>

@@ -10,6 +10,6 @@
     <result column="father_id" property="fatherId" jdbcType="INTEGER" />
     <result column="logo" property="logo" jdbcType="VARCHAR" />
     <result column="note" property="note" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
 </mapper>

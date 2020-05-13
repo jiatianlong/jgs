@@ -2,6 +2,7 @@ package com.jtl.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.jtl.bo.ItemsBO;
 import com.jtl.bo.ItemsOrSpecOrImgBO;
 import com.jtl.enums.CommentLevel;
 import com.jtl.enums.YesOrNo;
@@ -19,10 +20,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ItemsServiceImpl implements ItemsService {
@@ -271,6 +269,11 @@ public class ItemsServiceImpl implements ItemsService {
         }
     }
 
+    /**
+     * 查询所有商品,显示的时候默认显示规格第一个
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public List<ItemsOrSpecOrImgBO> qreryAllList() {
         Example example = new Example(Items.class);
@@ -305,6 +308,12 @@ public class ItemsServiceImpl implements ItemsService {
         return items;
     }
 
+    /**
+     * 根据商家ID查询商品
+     * @param storeId
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public List<ItemsOrSpecOrImgBO> queryItemsByStore(Integer storeId) {
 
@@ -342,6 +351,54 @@ public class ItemsServiceImpl implements ItemsService {
         }
 
         return items;
+    }
+
+
+    /**
+     * 添加商品
+     * @param itemsBO
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void addNewItems(ItemsBO itemsBO) {
+
+        //商品信息表添加信息
+        Items items = new Items();
+        items.setStoreShopId(itemsBO.getStoreId());
+        items.setItemName(itemsBO.getItemName());
+        items.setBrand(itemsBO.getBrand());
+        items.setCatId(Integer.valueOf(itemsBO.getCatId()));
+        items.setSellCounts("1");
+        items.setOnOffStatus(itemsBO.getOnOffStatus());
+        items.setContent(itemsBO.getContent());
+        items.setCreatedTime(new Date());
+
+        itemsMapper.insertUseGeneratedKeys(items);
+
+        //商品Id
+        int itemsId = items.getId();
+
+        //商品规格表添加信息
+        ItemsSpec itemsSpec = new ItemsSpec();
+        itemsSpec.setItemId(itemsId);
+        itemsSpec.setName(itemsBO.getItemName());
+        itemsSpec.setStock(Integer.valueOf(itemsBO.getItemskc()));
+        //优惠价
+        itemsSpec.setPriceDiscount(itemsBO.getItemsPrice());
+        //原价
+        itemsSpec.setPriceNormal(itemsBO.getItemsPrice());
+        itemsSpec.setUrl(itemsBO.getItemImgPath());
+        itemsSpec.setCreatedTime(new Date());
+        itemsSpecMapper.insert(itemsSpec);
+
+        //商品图片表添加信息
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(itemsId);
+        itemsImg.setUrl(itemsBO.getItemImgPath());
+        itemsImg.setSort(1);
+        itemsImg.setIsMain(1);
+        itemsImg.setCreatedTime(new Date());
+        itemsImgMapper.insert(itemsImg);
     }
 
 

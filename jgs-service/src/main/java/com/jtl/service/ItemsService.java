@@ -1,5 +1,6 @@
 package com.jtl.service;
 
+import com.jtl.bo.ItemsBO;
 import com.jtl.bo.ItemsOrSpecOrImgBO;
 import com.jtl.pojo.*;
 import com.jtl.utils.PagedGridResult;
@@ -118,6 +119,13 @@ public interface ItemsService {
      * @return
      */
     public List<ItemsOrSpecOrImgBO> queryItemsByStore(Integer storeId);
+
+
+    /**
+     * 添加商品
+     */
+    public void addNewItems(ItemsBO itemsBO);
+
 
 
 

@@ -10,7 +10,7 @@
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
     <result column="is_main" property="isMain" jdbcType="INTEGER" />
-    <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
-    <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
 </mapper>

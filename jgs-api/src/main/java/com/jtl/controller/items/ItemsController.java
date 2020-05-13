@@ -1,5 +1,7 @@
 package com.jtl.controller.items;
 
+import com.jtl.bo.AddressBO;
+import com.jtl.bo.ItemsBO;
 import com.jtl.bo.ItemsOrSpecOrImgBO;
 import com.jtl.controller.BaseController;
 import com.jtl.enums.YesOrNo;
@@ -22,13 +24,26 @@ import java.util.List;
 /**
  * 商品信息
  */
-@Api(value = "商品信息接口",tags = {"用于商品信息展示的相关接口"})
+@Api(value = "商品信息接口",tags = {"用于商品信息的相关接口"})
 @RestController
 @RequestMapping("/items")
 public class ItemsController extends BaseController {
 
     @Autowired
     private ItemsService itemsService;
+
+
+
+    @ApiOperation(value = "商家新增商品",notes = "商家新增商品",httpMethod = "POST")
+    @PostMapping("/add")
+    public JTLJSONResult add(@RequestBody ItemsBO itemsBO){
+        //应该要一个字段一个字段判断是否为空
+        if(itemsBO == null){
+            JTLJSONResult.errorMsg("数据为空");
+        }
+        itemsService.addNewItems(itemsBO);
+        return JTLJSONResult.ok();
+    }
 
     @ApiOperation(value = "查询所有商品",notes = "查询所有商品,关联商品表和商品规格表",httpMethod = "GET")
     @GetMapping("/qreryAllList")

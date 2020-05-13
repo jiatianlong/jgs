@@ -1,5 +1,6 @@
 package com.jtl.service;
 
+import com.jtl.bo.CategoryBO;
 import com.jtl.pojo.Category;
 import com.jtl.vo.NewItemsVo;
 
@@ -23,5 +24,14 @@ public interface CategoryService  {
      * @return
      */
     public List<Category> queryAll();
+
+
+    /**
+     * 添加商品分类
+     * @param categoryBO
+     */
+    public void addNewCategory(CategoryBO categoryBO);
+
+
 
 }
