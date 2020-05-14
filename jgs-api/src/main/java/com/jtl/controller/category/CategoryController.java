@@ -27,8 +27,6 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-
-
     @ApiOperation(value = "查询一级分类下的6条最新商品数据",notes = "查询一级分类下的6条最新商品数据",httpMethod = "GET")
     @GetMapping("/SixNewItems/{rootId}")
     public JTLJSONResult SixNewItems(

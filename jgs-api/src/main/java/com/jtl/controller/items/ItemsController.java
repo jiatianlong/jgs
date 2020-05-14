@@ -1,12 +1,8 @@
 package com.jtl.controller.items;
-
-import com.jtl.bo.AddressBO;
 import com.jtl.bo.ItemsBO;
 import com.jtl.bo.ItemsOrSpecOrImgBO;
 import com.jtl.controller.BaseController;
-import com.jtl.enums.YesOrNo;
 import com.jtl.pojo.*;
-import com.jtl.service.CarouselService;
 import com.jtl.service.ItemsService;
 import com.jtl.utils.JTLJSONResult;
 import com.jtl.utils.PagedGridResult;
@@ -17,7 +13,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tk.mybatis.mapper.genid.GenId;
 
 import java.util.List;
 
@@ -64,11 +59,11 @@ public class ItemsController extends BaseController {
 
 
     @ApiOperation(value = "查询商品详情",notes = "查询商品详情",httpMethod = "GET")
-    @GetMapping("/info/{itemId}")
+    @GetMapping("/info")
     public JTLJSONResult info(
             @ApiParam(name = "itemId",value = "商品ID",required = true)
             //路径参数
-            @PathVariable Integer itemId){
+            @RequestParam Integer itemId){
         if (itemId == null){
             return JTLJSONResult.errorMsg("商品ID为空");
         }
