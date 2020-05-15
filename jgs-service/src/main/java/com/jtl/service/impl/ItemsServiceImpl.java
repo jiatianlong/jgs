@@ -389,6 +389,7 @@ public class ItemsServiceImpl implements ItemsService {
         itemsSpec.setPriceNormal(itemsBO.getItemsPrice());
         itemsSpec.setUrl(itemsBO.getItemImgPath());
         itemsSpec.setCreatedTime(new Date());
+        itemsSpec.setDiscounts(0);
         itemsSpecMapper.insert(itemsSpec);
 
         //商品图片表添加信息
