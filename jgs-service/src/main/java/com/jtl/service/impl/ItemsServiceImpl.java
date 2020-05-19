@@ -133,6 +133,7 @@ public class ItemsServiceImpl implements ItemsService {
         return itemsCommentsMapper.selectCount(condition);
     }
 
+
     /**
      * 根据商品ID查询商品的评价(分页)
      * @param itemId
@@ -400,6 +401,22 @@ public class ItemsServiceImpl implements ItemsService {
         itemsImg.setIsMain(1);
         itemsImg.setCreatedTime(new Date());
         itemsImgMapper.insert(itemsImg);
+    }
+
+    /**
+     * 根据商品ID查询商品规格
+     * @param itemId
+     * @return
+     */
+    @Override
+    public List<ItemsSpec> queryItemsSpec(Integer itemId) {
+        Example example = new Example(ItemsSpec.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("itemId",itemId);
+        //查询商家所拥有的上架的商品
+        List<ItemsSpec> list = itemsSpecMapper.selectByExample(example);
+
+        return list;
     }
 
 

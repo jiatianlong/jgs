@@ -180,6 +180,27 @@ public class ItemsController extends BaseController {
     }
 
 
+    /**
+     * 根据商品ID查询商品规格，以及商家ID
+     * @param itemId
+     * @return
+     */
+    @ApiOperation(value = "根据商品ID查询商品规格",notes = "根据商品ID查询商品规格",httpMethod = "GET")
+    @GetMapping("/queryItemsSpec")
+    public JTLJSONResult queryItemsSpec(
+            @ApiParam(name = "itemId",value = "商品ID",required = true)
+            //因为是请求参数
+            @RequestParam Integer itemId){
+        if (itemId == null){
+            return JTLJSONResult.errorMsg("商品ID为空");
+        }
+
+        List<ItemsSpec> list =itemsService.queryItemsSpec(itemId);
+
+        return JTLJSONResult.ok(list);
+    }
+
+
 
 
 

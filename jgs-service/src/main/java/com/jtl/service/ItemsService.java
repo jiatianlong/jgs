@@ -128,5 +128,10 @@ public interface ItemsService {
 
 
 
+    /**
+     * 根据商家ID查询商品规格
+     * @return
+     */
+    public List<ItemsSpec> queryItemsSpec(Integer itemId);
 
 }
