@@ -194,9 +194,7 @@ public class ItemsController extends BaseController {
         if (itemId == null){
             return JTLJSONResult.errorMsg("商品ID为空");
         }
-
         List<ItemsSpec> list =itemsService.queryItemsSpec(itemId);
-
         return JTLJSONResult.ok(list);
     }
 

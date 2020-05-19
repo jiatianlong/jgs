@@ -1,16 +1,13 @@
 package com.jtl.controller.user;
 
-
 import com.jtl.bo.AddressBO;
 import com.jtl.pojo.UserAddress;
 import com.jtl.service.UserAddressService;
 import com.jtl.utils.JTLJSONResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Api(value = "用户收货地址相关",tags = {"用户收货地址相关的相关接口"})
@@ -31,8 +28,18 @@ public class UserAddressController {
     @Autowired
     private UserAddressService userAddressService;
 
+    @ApiOperation(value = "根据用户ID查询默认收货地址列表",notes = "根据用户ID查询默认收货地址列表",httpMethod = "POST")
+    @PostMapping("/queryAllIsDefault")
+    public JTLJSONResult queryAllIsDefault(@RequestParam Integer userId){
+        if(userId == null){
+            JTLJSONResult.errorMsg("用户ID为空");
+        }
+        List<UserAddress> list = userAddressService.queryAll(userId);
+        return JTLJSONResult.ok(list);
+    }
 
-    @ApiOperation(value = "根据用户ID查询收货地址列表",notes = "用户名是否存在",httpMethod = "POST")
+
+    @ApiOperation(value = "根据用户ID查询收货地址列表",notes = "根据用户ID查询收货地址列表",httpMethod = "POST")
     @PostMapping("/list")
     public JTLJSONResult usernameIsExist(@RequestParam Integer userId){
         if(userId == null){

@@ -90,7 +90,7 @@ public class OrderServiceImpl implements OrderService {
 
 
         //保存订单
-        ordersMapper.insert(orders);
+        ordersMapper.insertUseGeneratedKeys(orders);
 
         Integer orderId = orders.getId();
 

@@ -2,7 +2,6 @@ package com.jtl.service.impl;
 
 import com.jtl.mapper.StoreMapper;
 import com.jtl.pojo.Store;
-import com.jtl.pojo.Users;
 import com.jtl.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,8 +9,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.beans.Transient;
 
+/**
+ * 商家信息
+ */
 @Service
 public class StoreServiceImpl implements StoreService {
 
@@ -37,8 +38,17 @@ public class StoreServiceImpl implements StoreService {
         return store;
     }
 
-
-
+    /**
+     * 商家信息
+     * @param storeId
+     * @return
+     */
+    @Override
+    public Store queryAllView(Integer storeId) {
+        Store store = new Store();
+        store.setId(storeId);
+        return storeMapper.selectByPrimaryKey(storeId);
+    }
 
 
 }

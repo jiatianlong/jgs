@@ -35,6 +35,14 @@ public class UserAddressServiceImpl implements UserAddressService {
         return userAddressMapper.select(ua);
     }
 
+    @Override
+    public List<UserAddress> queryAllIsDefault(Integer userId) {
+        UserAddress us = new UserAddress();
+        us.setUserId(userId);
+        us.setIsDefault(1);
+        return userAddressMapper.select(us);
+    }
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void addNewUserAddress(AddressBO addressBO) {

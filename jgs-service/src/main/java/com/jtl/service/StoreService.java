@@ -13,4 +13,12 @@ public interface StoreService {
     public Store queryUserForLogin(String username, String password);
 
 
+    /**
+     * 根据商家Id查询商家信息
+     * @param storeId
+     * @return
+     */
+    public Store queryAllView(Integer storeId);
+
+
 }

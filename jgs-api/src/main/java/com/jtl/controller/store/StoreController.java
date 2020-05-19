@@ -2,6 +2,7 @@ package com.jtl.controller.store;
 
 import com.jtl.bo.UsersBO;
 import com.jtl.pojo.Store;
+import com.jtl.pojo.UserAddress;
 import com.jtl.pojo.Users;
 import com.jtl.service.StoreService;
 import com.jtl.utils.CookieUtils;
@@ -12,13 +13,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Api(value = "商家信息",tags = {"关于商家信息的相关接口"})
 @RestController
@@ -34,7 +33,6 @@ public class StoreController {
             , HttpServletRequest request, HttpServletResponse response) throws Exception{
         String username = usersBO.getUsername();
         String password = usersBO.getPassword();
-
         //0.判断用户名和密码必须不为空
         if (StringUtils.isBlank(username) ||
                 StringUtils.isBlank(password) ){
@@ -45,11 +43,24 @@ public class StoreController {
         if(stores == null){
             return JTLJSONResult.errorMsg("用户或密码不正确");
         }
-
         //TODO 生成用户token，存入redis会话
         //TODO 用户购物车更新
         return JTLJSONResult.ok(stores);
     }
+
+    @ApiOperation(value = "根据商家ID信息",notes = "根据商家ID信息",httpMethod = "POST")
+    @PostMapping("/queryAllView")
+    public JTLJSONResult queryAllView(@RequestParam Integer storeId){
+        if(storeId == null){
+            JTLJSONResult.errorMsg("商家ID为空");
+        }
+        Store store = storeService.queryAllView(storeId);
+        return JTLJSONResult.ok(store);
+    }
+
+
+
+
 
 
 }

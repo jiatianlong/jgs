@@ -17,6 +17,14 @@ public interface UserAddressService {
 
 
     /**
+     * 根据用户ID查询默认收货地址
+     * @param userId
+     * @return
+     */
+    public List<UserAddress> queryAllIsDefault(Integer userId);
+
+
+    /**
      * 添加用户收货地址
      * @param addressBO
      */
@@ -46,6 +54,8 @@ public interface UserAddressService {
      * 根据用户ID和收货地址ID查询用户地址信息
      * @param id
      */
-    public  UserAddress queryUserAddres(Integer id,Integer userId);
+    public UserAddress queryUserAddres(Integer id,Integer userId);
+
+
 
 }
