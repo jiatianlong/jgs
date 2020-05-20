@@ -48,9 +48,10 @@ public class StoreController {
         return JTLJSONResult.ok(stores);
     }
 
-    @ApiOperation(value = "根据商家ID信息",notes = "根据商家ID信息",httpMethod = "POST")
-    @PostMapping("/queryAllView")
-    public JTLJSONResult queryAllView(@RequestParam Integer storeId){
+
+    @ApiOperation(value = "根据商家ID信息",notes = "根据商家ID信息",httpMethod = "GET")
+    @GetMapping("/queryStoreView")
+    public JTLJSONResult queryStoreView(@RequestParam Integer storeId){
         if(storeId == null){
             JTLJSONResult.errorMsg("商家ID为空");
         }

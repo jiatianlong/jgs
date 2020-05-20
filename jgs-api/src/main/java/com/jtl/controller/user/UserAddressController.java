@@ -28,8 +28,8 @@ public class UserAddressController {
     @Autowired
     private UserAddressService userAddressService;
 
-    @ApiOperation(value = "根据用户ID查询默认收货地址列表",notes = "根据用户ID查询默认收货地址列表",httpMethod = "POST")
-    @PostMapping("/queryAllIsDefault")
+    @ApiOperation(value = "根据用户ID查询默认收货地址列表",notes = "根据用户ID查询默认收货地址列表",httpMethod = "GET")
+    @GetMapping("/queryAllIsDefault")
     public JTLJSONResult queryAllIsDefault(@RequestParam Integer userId){
         if(userId == null){
             JTLJSONResult.errorMsg("用户ID为空");
