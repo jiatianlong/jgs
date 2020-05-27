@@ -1,6 +1,9 @@
 package com.jtl.service;
 
+import com.jtl.bo.StoreBO;
+import com.jtl.bo.UsersBO;
 import com.jtl.pojo.Store;
+import com.jtl.pojo.Users;
 
 public interface StoreService {
 
@@ -19,6 +22,21 @@ public interface StoreService {
      * @return
      */
     public Store queryAllView(Integer storeId);
+
+
+    /**
+     * 判断用户名是否存在
+     * @param username
+     * @return
+     */
+    public boolean queryStorenameIsExist(String username);
+
+    /**
+     * 创建用户
+     * @param storeBO
+     * @return
+     */
+    public Store createStore(StoreBO storeBO);
 
 
 }

@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
         //默认昵称
-        users.setNickname(usersBO.getUsername());
+        users.setNickname("青山用户");
         //默认头像地址
         users.setFace(USER_FACE);
         //设置默认的生日
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
         users.setCreatedTime(new Date());
         users.setUpdatedTime(new Date());
 
-        usersMapper.insert(users);
+        usersMapper.insertUseGeneratedKeys(users);
 
         return users;
     }

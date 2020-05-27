@@ -1,5 +1,6 @@
 package com.jtl.controller.store;
 
+import com.jtl.bo.StoreBO;
 import com.jtl.bo.UsersBO;
 import com.jtl.pojo.Store;
 import com.jtl.pojo.UserAddress;
@@ -56,6 +57,39 @@ public class StoreController {
             JTLJSONResult.errorMsg("商家ID为空");
         }
         Store store = storeService.queryAllView(storeId);
+        return JTLJSONResult.ok(store);
+    }
+
+    @ApiOperation(value = "商家注册",notes = "商家注册",httpMethod = "POST")
+    @PostMapping("regist")
+    public JTLJSONResult regist(@RequestBody StoreBO storeBO){
+        String username = storeBO.getUsername();
+        String password = storeBO.getPassword();
+        String confirmPassword = storeBO.getConfirmPassword();
+
+        //0.判断用户名和密码必须不为空
+        if (StringUtils.isBlank(username) ||
+                StringUtils.isBlank(password) ||
+                StringUtils.isBlank(confirmPassword) ){
+            return JTLJSONResult.errorMsg("用户或密码不能为空");
+        }
+        //1.查询用户名是否存在
+        boolean isExist = storeService.queryStorenameIsExist(username);
+        if (isExist){
+            return JTLJSONResult.errorMsg("用户名已经存在");
+        }
+
+        //2.密码长度不能少于6为
+        if (password.length() < 6){
+            return JTLJSONResult.errorMsg("密码长度不能小于6");
+        }
+
+        //3.判断两次密码是否一致
+        if (!password.equals(confirmPassword)){
+            return JTLJSONResult.errorMsg("两次密码输入不一致");
+        }
+        //4.实现注册
+        Store store = storeService.createStore(storeBO);
         return JTLJSONResult.ok(store);
     }
 

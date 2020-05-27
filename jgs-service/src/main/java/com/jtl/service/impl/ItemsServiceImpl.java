@@ -415,7 +415,17 @@ public class ItemsServiceImpl implements ItemsService {
         criteria.andEqualTo("itemId",itemId);
         //查询商家所拥有的上架的商品
         List<ItemsSpec> list = itemsSpecMapper.selectByExample(example);
+        return list;
+    }
 
+    /**
+     * 根据商品分类ID查询商品
+     * @param catId
+     * @return
+     */
+    @Override
+    public List<SearchItemsVo> secrchItemsByCatId(Integer catId) {
+        List<SearchItemsVo> list =itemsMapperCustom.secrchItemsByCatId(catId);
         return list;
     }
 

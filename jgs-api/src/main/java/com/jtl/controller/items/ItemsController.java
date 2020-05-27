@@ -8,6 +8,7 @@ import com.jtl.utils.JTLJSONResult;
 import com.jtl.utils.PagedGridResult;
 import com.jtl.vo.CommentLevelCountsVo;
 import com.jtl.vo.ItemsInfoVo;
+import com.jtl.vo.SearchItemsVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -151,8 +152,7 @@ public class ItemsController extends BaseController {
         if(pageSize == null){
             pageSize = PAGE_SIZE;
         }
-        PagedGridResult gridResult =
-                itemsService.secrchItems(keywords,sort,page,pageSize);
+        PagedGridResult gridResult = itemsService.secrchItems(keywords,sort,page,pageSize);
         return JTLJSONResult.ok(gridResult);
     }
 
@@ -199,7 +199,18 @@ public class ItemsController extends BaseController {
     }
 
 
-
+    @ApiOperation(value = "根据分类ID查询商品",notes = "根据商品ID查询商品",httpMethod = "GET")
+    @GetMapping("/queryItemsByCatId")
+    public JTLJSONResult queryItemsByCatId(
+            @ApiParam(name = "catId",value = "catId",required = true)
+            //因为是请求参数
+            @RequestParam Integer catId){
+        if (catId == null){
+            return JTLJSONResult.errorMsg("分类ID为空");
+        }
+        List<SearchItemsVo> list =itemsService.secrchItemsByCatId(catId);
+        return JTLJSONResult.ok(list);
+    }
 
 
 }

@@ -6,8 +6,11 @@ import com.jtl.pojo.*;
 import com.jtl.utils.PagedGridResult;
 import com.jtl.vo.CommentLevelCountsVo;
 import com.jtl.vo.ItemCommentVo;
+import com.jtl.vo.SearchItemsVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 商品
@@ -133,5 +136,13 @@ public interface ItemsService {
      * @return
      */
     public List<ItemsSpec> queryItemsSpec(Integer itemId);
+
+
+    /**
+     * 根据
+     * @param catId
+     * @return
+     */
+    public List<SearchItemsVo> secrchItemsByCatId(Integer catId);
 
 }

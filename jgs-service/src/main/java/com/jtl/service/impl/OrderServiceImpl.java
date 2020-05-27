@@ -33,7 +33,6 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ItemsService itemsService;
 
-
     /**
      * 订单创建
      * @param submitOrderBo
@@ -87,14 +86,9 @@ public class OrderServiceImpl implements OrderService {
         orders.setCreatedTime(new Date());
         //更新时间
         orders.setUpdatedTime(new Date());
-
-
         //保存订单
         ordersMapper.insertUseGeneratedKeys(orders);
-
         Integer orderId = orders.getId();
-
-
         //2.循环根据itemSpeIds保存订单商品信息表，应为购买商品的时候，是按照的商品的规格中价格来计算的，所以这里包括多个
         String itemSpecIdArr[] = itemSpeIds.split(",");
         double totalAmout = 0 ; //商品原价累计
@@ -129,7 +123,6 @@ public class OrderServiceImpl implements OrderService {
             //2.4在用户提交订单以后，规格表中需要扣除库存
            itemsService.decreaseItemSpecStock(itemSpecId, buyCounts);
         }
-
 
         //3.保存订单状态表
         OrderStatus waitPayOrderStatus = new OrderStatus();

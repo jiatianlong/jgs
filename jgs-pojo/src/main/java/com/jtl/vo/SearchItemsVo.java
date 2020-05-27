@@ -5,6 +5,7 @@ package com.jtl.vo;
  */
 public class SearchItemsVo {
 
+    //商品ID
     private Integer itemId;
     private String itemName;
     private Integer sellCounts;
