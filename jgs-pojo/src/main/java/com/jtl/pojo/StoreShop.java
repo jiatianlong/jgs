@@ -3,6 +3,7 @@ package com.jtl.pojo;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Table(name = "store_shop")
 public class StoreShop {
@@ -60,13 +61,13 @@ public class StoreShop {
      * 创建时间
      */
     @Column(name = "created_time")
-    private String createdTime;
+    private Date createdTime;
 
     /**
      * 更改信息
      */
     @Column(name = "updated_time")
-    private String updatedTime;
+    private Date updatedTime;
 
     /**
      * @return id
@@ -244,39 +245,20 @@ public class StoreShop {
         this.phone = phone;
     }
 
-    /**
-     * 获取创建时间
-     *
-     * @return created_time - 创建时间
-     */
-    public String getCreatedTime() {
+
+    public Date getCreatedTime() {
         return createdTime;
     }
 
-    /**
-     * 设置创建时间
-     *
-     * @param createdTime 创建时间
-     */
-    public void setCreatedTime(String createdTime) {
+    public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
     }
 
-    /**
-     * 获取更改信息
-     *
-     * @return updated_time - 更改信息
-     */
-    public String getUpdatedTime() {
+    public Date getUpdatedTime() {
         return updatedTime;
     }
 
-    /**
-     * 设置更改信息
-     *
-     * @param updatedTime 更改信息
-     */
-    public void setUpdatedTime(String updatedTime) {
+    public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
     }
 }

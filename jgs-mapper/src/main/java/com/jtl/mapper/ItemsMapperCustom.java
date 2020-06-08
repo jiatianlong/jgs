@@ -1,6 +1,7 @@
 package com.jtl.mapper;
 
 import com.jtl.pojo.ItemsComments;
+import com.jtl.pojo.ItemsParam;
 import com.jtl.vo.ItemCommentVo;
 import com.jtl.vo.SearchItemsVo;
 import org.apache.ibatis.annotations.Param;
@@ -21,6 +22,9 @@ public interface ItemsMapperCustom {
 
     public int decreaseItemSpecStock(@Param("specId") String specId,
                                      @Param("pendingCounts") int pendingCounts);
+
+
+    public void editItemParam(ItemsParam itemsParam);
 
 
 

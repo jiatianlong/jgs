@@ -401,6 +401,11 @@ public class ItemsServiceImpl implements ItemsService {
         itemsImg.setIsMain(1);
         itemsImg.setCreatedTime(new Date());
         itemsImgMapper.insert(itemsImg);
+
+        //商品参数表
+        ItemsParam itemsParam = new ItemsParam();
+        itemsParam.setItemId(itemsId);
+        itemsParam.setCreatedTime(new Date());
     }
 
     /**
@@ -408,6 +413,7 @@ public class ItemsServiceImpl implements ItemsService {
      * @param itemId
      * @return
      */
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public List<ItemsSpec> queryItemsSpec(Integer itemId) {
         Example example = new Example(ItemsSpec.class);
@@ -423,10 +429,31 @@ public class ItemsServiceImpl implements ItemsService {
      * @param catId
      * @return
      */
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public List<SearchItemsVo> secrchItemsByCatId(Integer catId) {
         List<SearchItemsVo> list =itemsMapperCustom.secrchItemsByCatId(catId);
         return list;
+    }
+
+    /**
+     * 添加商品规格
+     * @param itemsSpec
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void addNewSpecItems(ItemsSpec itemsSpec) {
+        itemsSpecMapper.insert(itemsSpec);
+    }
+
+    /**
+     * 修改商品参数
+     * @param itemsParam
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void editItemParam(ItemsParam itemsParam) {
+        itemsMapperCustom.editItemParam(itemsParam);
     }
 
 

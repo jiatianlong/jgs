@@ -8,11 +8,16 @@ import com.jtl.pojo.*;
 import com.jtl.service.ItemsService;
 import com.jtl.service.OrderService;
 import com.jtl.service.UserAddressService;
+import com.jtl.vo.OrdersListViewVo;
+import org.apache.ibatis.annotations.Param;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Date;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 @Service
@@ -20,6 +25,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrdersMapper ordersMapper;
+
+    @Autowired
+    private OrdersMapperCustom ordersMapperCustom;
 
     @Autowired
     private OrderItemsMapper orderItemsMapper;
@@ -132,5 +140,80 @@ public class OrderServiceImpl implements OrderService {
         orderStatusMapper.insert(waitPayOrderStatus);
 
     }
+
+    /**
+     * 查询当天订单
+     * @param nowtime
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public List<Orders> getOrderListView(String nowtime,Integer storeId) {
+        List<Orders> list = ordersMapperCustom.getOrderList(nowtime,storeId);
+        return list;
+    }
+
+    /**
+     * 查询所有订单
+     * @param storeId
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public List<Orders> getOrderAll(Integer storeId) {
+        List<Orders> list = ordersMapperCustom.getOrderAll(storeId);
+        return list;
+    }
+
+    /**
+     * 查询今日成交金额
+     * @param storeId
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public List<Orders> selTodayMonry(Integer storeId,String nowtime) {
+
+        List<Orders> orders = new ArrayList<>();
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("storeId",storeId);
+        map.put("nowtime",nowtime);
+        orders = ordersMapperCustom.selTodayMonry(map);
+        return orders;
+    }
+
+    /**
+     * 根据条件查询商家订单信息及内容
+     * @param storeId
+     * @param orderStatus
+     * @return
+     */
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public List<OrdersListViewVo> selectOrdersByFactor(Integer storeId,Integer orderStatus) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("storeId",storeId);
+        map.put("orderStatus",orderStatus);
+        List<OrdersListViewVo> list = ordersMapperCustom.selectOrdersByFactor(map);
+        return list;
+    }
+
+
+    /**
+     * 根据条件查询用户订单信息及内容
+     * @param userId
+     * @param orderStatus
+     * @return
+     */
+    @Override
+    public List<OrdersListViewVo> selectOrdersUserByFactor(Integer userId, Integer orderStatus) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("userId",userId);
+        map.put("orderStatus",orderStatus);
+        List<OrdersListViewVo> list = ordersMapperCustom.selectOrdersUserByFactor(map);
+        return list;
+    }
+
 
 }

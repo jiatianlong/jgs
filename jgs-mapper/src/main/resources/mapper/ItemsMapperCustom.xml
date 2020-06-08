@@ -117,6 +117,20 @@
     </select>
 
 
+    <update  id="editItemParam"  parameterType="com.jtl.pojo.ItemsParam">
+        update items_param
+        <set>
+            <if test="producPlace != null">produc_place=#{producPlace},</if>
+            <if test="footPeriod != null">foot_period=#{footPeriod},</if>
+            <if test="factoryName != null">factory_name=#{factoryName},</if>
+            <if test="factoryAddress != null">factory_address=#{factoryAddress},</if>
+            <if test="packagingMethod != null">packaging_method=#{packagingMethod},</if>
+            <if test="weight != null">weight=#{weight}</if>
+        </set>
+        where item_id=#{itemId}
+    </update >
+
+
 
 
 

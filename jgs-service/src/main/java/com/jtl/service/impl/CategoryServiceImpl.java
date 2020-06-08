@@ -44,6 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
      * 获取所有商品分类
      * @return
      */
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public List<Category> queryAll() {
         return categoryMapper.selectAll();
@@ -53,6 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
      * 添加商品分类
      * @param categoryBO
      */
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void addNewCategory(CategoryBO categoryBO) {
         Category category = new Category();

@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -211,6 +212,35 @@ public class ItemsController extends BaseController {
         List<SearchItemsVo> list =itemsService.secrchItemsByCatId(catId);
         return JTLJSONResult.ok(list);
     }
+
+
+
+    @ApiOperation(value = "商家新增商品规格",notes = "商家新增商品规格",httpMethod = "POST")
+    @PostMapping("/specAdd")
+    public JTLJSONResult specAdd(@RequestBody ItemsSpec itemsSpec){
+        //应该要一个字段一个字段判断是否为空
+        if(itemsSpec == null){
+            JTLJSONResult.errorMsg("数据为空");
+        }
+        itemsSpec.setCreatedTime(new Date());
+        itemsSpec.setUpdatedTime(new Date());
+        itemsService.addNewSpecItems(itemsSpec);
+        return JTLJSONResult.ok();
+    }
+
+    @ApiOperation(value = "根据商品ID修改商品参数",notes = "根据商品ID修改商品参数",httpMethod = "POST")
+    @PostMapping("/editItemParam")
+    public JTLJSONResult editItemParam(@RequestBody ItemsParam itemsParam){
+        //应该要一个字段一个字段判断是否为空
+        if(itemsParam == null){
+            JTLJSONResult.errorMsg("数据为空");
+        }
+        itemsParam.setUpdatedTime(new Date());
+        itemsService.editItemParam(itemsParam);
+        return JTLJSONResult.ok();
+    }
+
+
 
 
 }

@@ -5,6 +5,8 @@ import com.jtl.bo.UsersBO;
 import com.jtl.pojo.Store;
 import com.jtl.pojo.Users;
 
+import java.util.List;
+
 public interface StoreService {
 
     /**
@@ -22,7 +24,6 @@ public interface StoreService {
      * @return
      */
     public Store queryAllView(Integer storeId);
-
 
     /**
      * 判断用户名是否存在

@@ -145,4 +145,16 @@ public interface ItemsService {
      */
     public List<SearchItemsVo> secrchItemsByCatId(Integer catId);
 
+
+    /**
+     * 添加商品
+     */
+    public void addNewSpecItems(ItemsSpec itemsSpec);
+
+    /**
+     * 修改商品参数
+     * @param itemsParam
+     */
+    public void editItemParam(ItemsParam itemsParam);
+
 }

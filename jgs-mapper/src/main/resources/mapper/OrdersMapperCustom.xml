@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jtl.mapper.OrdersMapperCustom" >
+
+  <resultMap id="BaseResultMap" type="com.jtl.pojo.Orders" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
+    <result column="receiver_mobile" property="receiverMobile" jdbcType="VARCHAR" />
+    <result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR" />
+    <result column="shipping_address" property="shippingAddress" jdbcType="VARCHAR" />
+    <result column="total_amount" property="totalAmount" jdbcType="DOUBLE" />
+    <result column="real_pay_amount" property="realPayAmount" jdbcType="DOUBLE" />
+    <result column="post_amount" property="postAmount" jdbcType="INTEGER" />
+    <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
+    <result column="left_msg" property="leftMsg" jdbcType="VARCHAR" />
+    <result column="extand" property="extand" jdbcType="VARCHAR" />
+    <result column="is_comment" property="isComment" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="rider_id" property="riderId" jdbcType="INTEGER" />
+    <result column="order_type_rider" property="orderTypeRider" jdbcType="INTEGER" />
+    <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
+    <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <!-- 按日期查询订单数 -->
+  <select id="getOrderList" parameterType="Map" resultMap="BaseResultMap">
+    select * from orders where store_id = #{storeId} and created_time like CONCAT(#{nowtime},'%');
+  </select>
+
+  <!-- 查询所有订单 -->
+  <select id="getOrderAll" parameterType="Map" resultMap="BaseResultMap">
+    select * from orders where store_id = #{storeId} ;
+  </select>
+
+  <!-- 查询今日订单金额 -->
+  <select id="selTodayMonry" parameterType="Map" resultMap="BaseResultMap">
+    select * from orders
+    where
+    store_id =  #{paramsMap.storeId} and created_time
+    like CONCAT(#{paramsMap.nowtime},'%');
+  </select>
+
+
+
+  <select id="selectOrdersByFactor"  parameterType="Map" resultType="com.jtl.vo.OrdersListViewVo">
+    SELECT
+        o.user_id as userId,
+        o.store_id as storeId,
+        o.receiver_name as receiverName,
+        o.receiver_mobile as receiverMobile,
+        o.receiver_address as receiverAddress,
+        o.shipping_address as shippingAddress,
+        o.total_amount as totalAmount,
+        o.real_pay_amount as realPayAmount,
+        o.post_amount AS postAmount,
+        o.pay_method	AS payMethod,
+        os.order_status AS orderStatus,
+        oi.item_img AS itemImg,
+        oi.item_name AS itemName,
+        oi.item_spec_name as itemSpecName,
+        oi.price as price,
+        oi.buy_counts as buyCounts
+    FROM orders o
+    LEFT JOIN order_status os ON o.id = os.order_id
+    LEFT JOIN order_items oi ON o.id = oi.order_id
+    WHERE
+        o.store_id = #{paramsMap.storeId}
+      <if test="paramsMap.orderStatus != null">
+        and  os.order_status = #{paramsMap.orderStatus}
+      </if>
+      order by
+      <choose>
+          <otherwise>
+              o.id desc
+          </otherwise>
+      </choose>
+  </select>
+
+
+
+    <select id="selectOrdersUserByFactor"  parameterType="Map" resultType="com.jtl.vo.OrdersListViewVo">
+        SELECT
+        o.user_id as userId,
+        o.store_id as storeId,
+        o.receiver_name as receiverName,
+        o.receiver_mobile as receiverMobile,
+        o.receiver_address as receiverAddress,
+        o.shipping_address as shippingAddress,
+        o.total_amount as totalAmount,
+        o.real_pay_amount as realPayAmount,
+        o.post_amount AS postAmount,
+        o.pay_method	AS payMethod,
+        os.order_status AS orderStatus,
+        oi.item_img AS itemImg,
+        oi.item_name AS itemName,
+        oi.item_spec_name as itemSpecName,
+        oi.price as price,
+        oi.buy_counts as buyCounts
+        FROM orders o
+        LEFT JOIN order_status os ON o.id = os.order_id
+        LEFT JOIN order_items oi ON o.id = oi.order_id
+        WHERE
+        o.user_id = #{paramsMap.userId}
+        <if test="paramsMap.orderStatus != null">
+            and  os.order_status = #{paramsMap.orderStatus}
+        </if>
+        order by
+        <choose>
+            <otherwise>
+                o.id desc
+            </otherwise>
+        </choose>
+    </select>
+
+
+
+
+
+</mapper>

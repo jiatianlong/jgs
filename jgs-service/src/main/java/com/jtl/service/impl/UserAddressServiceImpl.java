@@ -65,6 +65,10 @@ public class UserAddressServiceImpl implements UserAddressService {
 
     }
 
+    /**
+     * 修改地址信息
+     * @param addressBO
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void updateUserAddress(AddressBO addressBO) {
