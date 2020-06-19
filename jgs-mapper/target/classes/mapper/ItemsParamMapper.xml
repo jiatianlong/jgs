@@ -15,7 +15,7 @@
     <result column="packaging_method" property="packagingMethod" jdbcType="VARCHAR" />
     <result column="weight" property="weight" jdbcType="VARCHAR" />
     <result column="extend" property="extend" jdbcType="VARCHAR" />
-    <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
-    <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
 </mapper>
