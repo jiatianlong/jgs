@@ -23,8 +23,10 @@ import java.util.Iterator;
 public class UploadFile {
 	
 	//上传的文件夹路径
-	private static final String uploadServerDir = "E:/img/";
-	
+	//private static final String uploadServerDir = "E:/img/";
+
+	private static final String uploadServerDir = "/img/";
+
 	private static final String separator = "/";
 	/*@RequestMapping(value="/upload")*/
 	@PostMapping(value="/upload")

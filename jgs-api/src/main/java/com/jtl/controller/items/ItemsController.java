@@ -235,8 +235,19 @@ public class ItemsController extends BaseController {
         if(itemsParam == null){
             JTLJSONResult.errorMsg("数据为空");
         }
-        itemsParam.setUpdatedTime(new Date());
-        itemsService.editItemParam(itemsParam);
+
+        ItemsParam cs =  itemsService.queryItemParamList(itemsParam.getItemId());
+
+        if (cs != null){
+            itemsParam.setUpdatedTime(new Date());
+            itemsService.editItemParam(itemsParam);
+        }else {
+            itemsParam.setExtend("无");
+            itemsParam.setCreatedTime(new Date());
+            itemsParam.setUpdatedTime(new Date());
+            itemsService.addNewItemsParams(itemsParam);
+        }
+
         return JTLJSONResult.ok();
     }
 

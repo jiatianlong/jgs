@@ -446,6 +446,17 @@ public class ItemsServiceImpl implements ItemsService {
         itemsSpecMapper.insert(itemsSpec);
     }
 
+
+    /**
+     * 添加商品参数
+     * @param itemsParam
+     */
+    @Override
+    public void addNewItemsParams(ItemsParam itemsParam) {
+        itemsParamMapper.insert(itemsParam);
+    }
+
+
     /**
      * 修改商品参数
      * @param itemsParam

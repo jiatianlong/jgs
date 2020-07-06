@@ -1,6 +1,7 @@
 package com.jtl.service.impl;
 
 import com.jtl.mapper.StoreShopMapper;
+import com.jtl.pojo.Store;
 import com.jtl.pojo.StoreShop;
 import com.jtl.service.StoreService;
 import com.jtl.service.StoreShopService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 import java.util.List;
@@ -40,7 +42,12 @@ public class StoreShopServiceImpl implements StoreShopService {
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public StoreShop queryView(Integer storeId) {
-        return storeShopMapper.selectByPrimaryKey(storeId);
+
+        Example userExmple = new Example(StoreShop.class);
+        Example.Criteria userCriteria = userExmple.createCriteria();
+        userCriteria.andEqualTo("storeId",storeId);
+        StoreShop result = storeShopMapper.selectOneByExample(userExmple);
+        return result;
     }
 
     /**

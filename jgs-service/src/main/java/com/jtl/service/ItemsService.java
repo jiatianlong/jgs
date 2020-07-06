@@ -130,6 +130,13 @@ public interface ItemsService {
     public void addNewItems(ItemsBO itemsBO);
 
 
+    /**
+     * 添加商品规格
+     * @param itemsParam
+     */
+    public void addNewItemsParams(ItemsParam itemsParam);
+
+
 
     /**
      * 根据商家ID查询商品规格

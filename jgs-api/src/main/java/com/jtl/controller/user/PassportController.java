@@ -39,6 +39,11 @@ public class PassportController {
         if (isExist){
             return JTLJSONResult.errorMsg("用户名已经存在");
         }
+
+        if(isExist == true){
+            return JTLJSONResult.errorMsg("用户名不存在");
+        }
+
         //请求成功，用户名没有重复
         return JTLJSONResult.ok();
     }
