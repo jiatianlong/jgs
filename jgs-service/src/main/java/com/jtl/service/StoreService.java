@@ -39,5 +39,11 @@ public interface StoreService {
      */
     public Store createStore(StoreBO storeBO);
 
+    /**
+     * 修改用户信息
+     * @param store
+     */
+    public void update(Store store);
+
 
 }

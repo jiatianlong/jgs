@@ -28,8 +28,8 @@ public class StoreCharteredController {
 
     @ApiOperation(value = "查询商家营业执照信息",notes = "查询商家营业执照信息",httpMethod = "POST")
     @PostMapping("queryStoreCharteredViewByKey")
-    public JTLJSONResult queryStoreCharteredViewByKey(@RequestParam Integer storeId){
-        StoreChartered storeChartered = storeCharteredService.queryStoreCharteredView(storeId);
+    public JTLJSONResult queryStoreCharteredViewByKey(@RequestParam String storeId){
+        StoreChartered storeChartered = storeCharteredService.queryStoreCharteredView(Integer.valueOf(storeId));
         return JTLJSONResult.ok(storeChartered);
     }
 

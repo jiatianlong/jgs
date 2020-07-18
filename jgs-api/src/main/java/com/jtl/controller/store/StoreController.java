@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 @Api(value = "商家信息",tags = {"关于商家信息的相关接口"})
@@ -89,6 +90,15 @@ public class StoreController {
         return JTLJSONResult.ok(store);
     }
 
+
+    @ApiOperation(value = "商家信息注册",notes = "商家信息注册",httpMethod = "POST")
+    @PostMapping("update")
+    public JTLJSONResult update(@RequestBody Store store){
+        store.setUpdatedTime(new Date());
+        storeService.update(store);
+        Store a = storeService.queryAllView(store.getId());
+        return JTLJSONResult.ok(a);
+    }
 
 
 

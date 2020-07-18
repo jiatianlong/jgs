@@ -95,5 +95,12 @@ public class StoreServiceImpl implements StoreService {
         return store;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void update(Store store) {
+        //storeMapper.updateByPrimaryKey(store);
+         storeMapper.updateByPrimaryKeySelective(store);
+    }
+
 
 }

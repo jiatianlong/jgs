@@ -62,6 +62,7 @@ public class PassportController {
                 StringUtils.isBlank(confirmPassword) ){
             return JTLJSONResult.errorMsg("用户或密码不能为空");
         }
+
         //1.查询用户名是否存在
         boolean isExist = userService.queryUsernameIsExist(username);
         if (isExist){
@@ -77,6 +78,7 @@ public class PassportController {
         if (!password.equals(confirmPassword)){
             return JTLJSONResult.errorMsg("两次密码输入不一致");
         }
+
         //4.实现注册
         Users users = userService.createUser(usersBO);
         return JTLJSONResult.ok(users);

@@ -90,11 +90,9 @@ public class ItemsServiceImpl implements ItemsService {
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public ItemsParam queryItemParamList(Integer itemId) {
-
         Example itemsParamExp = new Example(ItemsParam.class);
         Example.Criteria criteria = itemsParamExp.createCriteria();
         criteria.andEqualTo("itemId",itemId);
-
         return itemsParamMapper.selectOneByExample(itemsParamExp);
     }
 
