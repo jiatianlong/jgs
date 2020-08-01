@@ -1,9 +1,9 @@
 package com.jtl.service;
 
 import com.jtl.bo.SubmitOrderBo;
+import com.jtl.pojo.OrderStatus;
 import com.jtl.pojo.Orders;
 import com.jtl.vo.OrdersListViewVo;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -53,5 +53,42 @@ public interface OrderService {
      * @return
      */
     public List<OrdersListViewVo> selectOrdersUserByFactor(Integer userId,Integer orderStatus);
+
+
+    /**
+     * 查询骑手所有订单
+     * @param riderId
+     * @return
+     */
+    public List<OrdersListViewVo> selectRiderOrdersAll(Integer riderId);
+
+    /**
+     * 查询骑手未接单
+     * @param
+     * @return
+     */
+    public List<OrdersListViewVo> selectRiderWeiOrders();
+
+    /**
+     * 查询骑手已接单
+     * @param riderId
+     * @return
+     */
+    public List<OrdersListViewVo> selectRiderYiOrdersAll(Integer riderId);
+
+
+    /**
+     * 查询骑手已完成订单
+     * @param riderId
+     * @return
+     */
+    public List<OrdersListViewVo> selectRiderWanOrdersAll(Integer riderId);
+
+
+
+
+
+
+
 
 }

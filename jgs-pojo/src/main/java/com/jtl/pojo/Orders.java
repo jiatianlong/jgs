@@ -74,6 +74,12 @@ public class Orders {
     @Column(name = "left_msg")
     private String leftMsg;
 
+
+    /**
+     * 是否配送
+     */
+    private String isDelivery;
+
     /**
      * 拓展字段
      */
@@ -114,6 +120,14 @@ public class Orders {
      */
     @Column(name = "updated_time")
     private Date updatedTime;
+
+    public String getIsDelivery() {
+        return isDelivery;
+    }
+
+    public void setIsDelivery(String isDelivery) {
+        this.isDelivery = isDelivery;
+    }
 
     /**
      * @return id

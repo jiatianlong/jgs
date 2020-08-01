@@ -2,12 +2,17 @@ package com.jtl.vo;
 
 public class OrdersListViewVo {
 
+    private Integer id;
     private Integer userId;
     private Integer storeId;
     private String receiverName;
     private String receiverMobile;
     private String receiverAddress;
     private String shippingAddress;
+    //是否配送 YesOrNo
+    private String isDelivery;
+    //车型
+    private String extand;
     private Double totalAmount;
     private Double realPayAmount;
     private Integer postAmount;
@@ -18,7 +23,99 @@ public class OrdersListViewVo {
     private String itemSpecName;
     private Double price;
     private Integer buyCounts;
+    //订单接单状态
+    private Integer orderTypeRider;
+    //创建时间
+    private String createdTime;
+    //商家地址
+    private String storeAddress;
+    //商家详细地址
+    private String detailedadd;
+    //商家电话
+    private String storePhone;
 
+    private String storeName;
+    private String usName;
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    public String getUsName() {
+        return usName;
+    }
+
+    public void setUsName(String usName) {
+        this.usName = usName;
+    }
+
+    public String getStoreAddress() {
+        return storeAddress;
+    }
+
+    public void setStoreAddress(String storeAddress) {
+        this.storeAddress = storeAddress;
+    }
+
+    public String getDetailedadd() {
+        return detailedadd;
+    }
+
+    public void setDetailedadd(String detailedadd) {
+        this.detailedadd = detailedadd;
+    }
+
+    public String getStorePhone() {
+        return storePhone;
+    }
+
+    public void setStorePhone(String storePhone) {
+        this.storePhone = storePhone;
+    }
+
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Integer getOrderTypeRider() {
+        return orderTypeRider;
+    }
+
+    public void setOrderTypeRider(Integer orderTypeRider) {
+        this.orderTypeRider = orderTypeRider;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getIsDelivery() {
+        return isDelivery;
+    }
+
+    public void setIsDelivery(String isDelivery) {
+        this.isDelivery = isDelivery;
+    }
+
+    public String getExtand() {
+        return extand;
+    }
+
+    public void setExtand(String extand) {
+        this.extand = extand;
+    }
 
     public Integer getUserId() {
         return userId;

@@ -2,7 +2,6 @@ package com.jtl.mapper;
 
 import com.jtl.pojo.Orders;
 import com.jtl.vo.OrdersListViewVo;
-import com.jtl.vo.ZgAreaVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -53,6 +52,33 @@ public interface OrdersMapperCustom {
     public List<OrdersListViewVo> selectOrdersUserByFactor(@Param("paramsMap") Map<String,Object> map);
 
 
+    /**
+     * 查询骑手所有订单
+     * @param map
+     * @return
+     */
+    public List<OrdersListViewVo> selectRiderOrdersAll(@Param("paramsMap") Map<String,Object> map);
+
+    /**
+     * 查询骑手未接单
+     * @param map
+     * @return
+     */
+    public List<OrdersListViewVo> selectRiderWeiOrders(@Param("paramsMap") Map<String,Object> map);
+
+    /**
+     * 查询骑手已接单
+     * @param map
+     * @return
+     */
+    public List<OrdersListViewVo> selectRiderYiWanOrdersAll(@Param("paramsMap") Map<String,Object> map);
+
+    /**
+     * 根据ID查询订单信息
+     * @param id
+     * @return
+     */
+    public OrdersListViewVo queryAllById(Integer id);
 
 
 }

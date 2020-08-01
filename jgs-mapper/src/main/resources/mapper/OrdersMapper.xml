@@ -18,6 +18,7 @@
     <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
     <result column="left_msg" property="leftMsg" jdbcType="VARCHAR" />
     <result column="extand" property="extand" jdbcType="VARCHAR" />
+    <result column="is_delivery" property="isDelivery" jdbcType="VARCHAR" />
     <result column="is_comment" property="isComment" jdbcType="INTEGER" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
     <result column="rider_id" property="riderId" jdbcType="INTEGER" />

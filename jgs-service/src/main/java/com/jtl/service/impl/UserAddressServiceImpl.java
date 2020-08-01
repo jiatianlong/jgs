@@ -35,6 +35,7 @@ public class UserAddressServiceImpl implements UserAddressService {
         return userAddressMapper.select(ua);
     }
 
+
     @Override
     public List<UserAddress> queryAllIsDefault(Integer userId) {
         UserAddress us = new UserAddress();

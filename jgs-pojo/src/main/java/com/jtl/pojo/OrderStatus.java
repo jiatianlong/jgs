@@ -8,7 +8,7 @@ public class OrderStatus {
     /**
      * 订单ID
      */
-    @Column(name = "order_id")
+    @Id
     private Integer orderId;
 
     /**

@@ -1,11 +1,8 @@
 package com.jtl.controller.order;
-import com.jtl.bo.AddressBO;
 import com.jtl.bo.SubmitOrderBo;
 import com.jtl.enums.PayMethod;
 import com.jtl.pojo.Orders;
-import com.jtl.pojo.UserAddress;
 import com.jtl.service.OrderService;
-import com.jtl.service.UserAddressService;
 import com.jtl.utils.JTLJSONResult;
 import com.jtl.vo.OrdersHomeInformationVo;
 import com.jtl.vo.OrdersListViewVo;
@@ -13,14 +10,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Api(value = "订单相关",tags = {"订单相关的api接口"})
+@Api(value = "商家用户订单相关",tags = {"商家用户订单相关的api接口"})
 @RestController
 @RequestMapping("/orders")
 public class OrdersController {
@@ -79,6 +75,7 @@ public class OrdersController {
            allList = orderService.getOrderAll(storeId);
            //历史订单数
            String lishiOrdersSize = String.valueOf(allList.size());
+
            //今日成交金额
            List<Orders> ordersList= orderService.selTodayMonry(storeId,todaytime);
            double todMoney = 0;
@@ -198,6 +195,13 @@ public class OrdersController {
         }
         return JTLJSONResult.ok(orListType);
     }
+
+
+
+
+
+
+
 
 
 

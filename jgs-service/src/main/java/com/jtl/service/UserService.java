@@ -55,5 +55,11 @@ public interface UserService {
      */
     public void updateUserFace(String userId, String faceUrl);
 
+    /**
+     * 根据内容修改信息
+     * @param users
+     */
+    public void update(Users users);
+
 
 }

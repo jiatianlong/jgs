@@ -34,7 +34,7 @@ public class UserAddressController {
         if(userId == null){
             JTLJSONResult.errorMsg("用户ID为空");
         }
-        List<UserAddress> list = userAddressService.queryAll(userId);
+        List<UserAddress> list = userAddressService.queryAllIsDefault(userId);
         return JTLJSONResult.ok(list);
     }
 

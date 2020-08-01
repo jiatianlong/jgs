@@ -142,5 +142,15 @@ public class UserServiceImpl implements UserService {
         usersMapper.updateByPrimaryKeySelective(updateUser);
     }
 
+    /**
+     * 更具内容修改
+     * @param users
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void update(Users users) {
+        usersMapper.updateByPrimaryKeySelective(users);
+    }
+
 
 }

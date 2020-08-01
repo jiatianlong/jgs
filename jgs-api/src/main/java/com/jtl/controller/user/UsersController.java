@@ -1,10 +1,14 @@
 package com.jtl.controller.user;
 
 
+import com.jtl.bo.AddressBO;
 import com.jtl.bo.CenterUsersBO;
 import com.jtl.bo.UsersBO;
 import com.jtl.controller.BaseController;
+import com.jtl.pojo.UserAddress;
+import com.jtl.pojo.UserOrUserAddress;
 import com.jtl.pojo.Users;
+import com.jtl.service.UserAddressService;
 import com.jtl.service.UserService;
 import com.jtl.utils.*;
 import io.swagger.annotations.Api;
@@ -29,6 +33,9 @@ public class UsersController extends BaseController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserAddressService userAddressService;
 
     @ApiOperation(value = "根据用户ID查询用户信息",notes = "根据用户ID查询用户信息",httpMethod = "GET")
     @GetMapping("/queryUserCont")
@@ -132,6 +139,34 @@ public class UsersController extends BaseController {
 
 
 
+    @ApiOperation(value = "修改用户信息",notes = "修改用户信息",httpMethod = "POST")
+    @PostMapping("/updateUserOrAddAddress")
+    public JTLJSONResult updateUserOrAddAddress(@RequestBody UserOrUserAddress userOrUserAddress) throws Exception {
+        //userService.updateUsers(centerUsersBO);
+
+        //修改用户信息
+        Users users = new Users();
+        users.setId(userOrUserAddress.getId());
+        users.setNickname(userOrUserAddress.getNickName());
+        users.setRealname(userOrUserAddress.getRealName());
+        users.setMobile(userOrUserAddress.getMobile());
+        users.setEmail(userOrUserAddress.getEmail());
+        userService.update(users);
+        //添加用户地址
+        AddressBO addressBO = new AddressBO();
+        addressBO.setUserId(Integer.valueOf(userOrUserAddress.getId()));
+        addressBO.setReceiver(userOrUserAddress.getRealName());
+        addressBO.setMobile(userOrUserAddress.getMobile());
+        addressBO.setProvince(userOrUserAddress.getProvince());
+        addressBO.setCity(userOrUserAddress.getCity());
+        addressBO.setDistrict(userOrUserAddress.getDistrict());
+        addressBO.setDetail(userOrUserAddress.getDetail());
+        userAddressService.addNewUserAddress(addressBO);
+
+        return JTLJSONResult.ok();
+
+
+    }
 
 
 

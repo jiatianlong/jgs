@@ -16,9 +16,9 @@
     <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
     <result column="left_msg" property="leftMsg" jdbcType="VARCHAR" />
     <result column="extand" property="extand" jdbcType="VARCHAR" />
+    <result column="extand" property="extand" jdbcType="VARCHAR" />
     <result column="is_comment" property="isComment" jdbcType="INTEGER" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
-    <result column="rider_id" property="riderId" jdbcType="INTEGER" />
     <result column="order_type_rider" property="orderTypeRider" jdbcType="INTEGER" />
     <result column="created_time" property="createdTime" jdbcType="VARCHAR" />
     <result column="updated_time" property="updatedTime" jdbcType="VARCHAR" />
@@ -46,26 +46,33 @@
 
 
   <select id="selectOrdersByFactor"  parameterType="Map" resultType="com.jtl.vo.OrdersListViewVo">
-    SELECT
-        o.user_id as userId,
-        o.store_id as storeId,
-        o.receiver_name as receiverName,
-        o.receiver_mobile as receiverMobile,
-        o.receiver_address as receiverAddress,
-        o.shipping_address as shippingAddress,
-        o.total_amount as totalAmount,
-        o.real_pay_amount as realPayAmount,
-        o.post_amount AS postAmount,
-        o.pay_method	AS payMethod,
-        os.order_status AS orderStatus,
-        oi.item_img AS itemImg,
-        oi.item_name AS itemName,
-        oi.item_spec_name as itemSpecName,
-        oi.price as price,
-        oi.buy_counts as buyCounts
-    FROM orders o
-    LEFT JOIN order_status os ON o.id = os.order_id
-    LEFT JOIN order_items oi ON o.id = oi.order_id
+      SELECT
+      o.id as id,
+      o.user_id as userId,
+      o.store_id as storeId,
+      o.rider_id as riderId,
+      o.receiver_name as receiverName,
+      o.receiver_mobile as receiverMobile,
+      o.receiver_address as receiverAddress,
+      o.shipping_address as shippingAddress,
+      o.total_amount as totalAmount,
+      o.real_pay_amount as realPayAmount,
+      o.extand as extand,
+      o.order_type_rider as orderTypeRider,
+      o.post_amount AS postAmount,
+      o.pay_method	AS payMethod,
+      o.is_delivery AS isDelivery,
+      o.created_time AS createdTime,
+      os.order_status AS orderStatus,
+      oi.item_img AS itemImg,
+      oi.item_name AS itemName,
+      oi.item_spec_name as itemSpecName,
+      oi.price as price,
+      oi.buy_counts as buyCounts
+      FROM orders o
+      LEFT JOIN order_status os ON o.id = os.order_id
+      LEFT JOIN order_items oi ON o.id = oi.order_id
+      LEFT JOIN rider rd ON rd.id = o.rider_id
     WHERE
         o.store_id = #{paramsMap.storeId}
       <if test="paramsMap.orderStatus != null">
@@ -83,16 +90,22 @@
 
     <select id="selectOrdersUserByFactor"  parameterType="Map" resultType="com.jtl.vo.OrdersListViewVo">
         SELECT
+        o.id as id,
         o.user_id as userId,
         o.store_id as storeId,
+        o.rider_id as riderId,
         o.receiver_name as receiverName,
         o.receiver_mobile as receiverMobile,
         o.receiver_address as receiverAddress,
         o.shipping_address as shippingAddress,
         o.total_amount as totalAmount,
         o.real_pay_amount as realPayAmount,
+        o.extand as extand,
+        o.order_type_rider as orderTypeRider,
         o.post_amount AS postAmount,
         o.pay_method	AS payMethod,
+        o.is_delivery AS isDelivery,
+        o.created_time AS createdTime,
         os.order_status AS orderStatus,
         oi.item_img AS itemImg,
         oi.item_name AS itemName,
@@ -102,6 +115,7 @@
         FROM orders o
         LEFT JOIN order_status os ON o.id = os.order_id
         LEFT JOIN order_items oi ON o.id = oi.order_id
+        LEFT JOIN rider rd ON rd.id = o.rider_id
         WHERE
         o.user_id = #{paramsMap.userId}
         <if test="paramsMap.orderStatus != null">
@@ -114,6 +128,205 @@
             </otherwise>
         </choose>
     </select>
+
+
+    <!--查询骑手所有订单-->
+    <select id="selectRiderOrdersAll"  parameterType="Map" resultType="com.jtl.vo.OrdersListViewVo">
+        SELECT
+        o.id as id,
+        o.user_id as userId,
+        o.store_id as storeId,
+        o.rider_id as riderId,
+        o.receiver_name as receiverName,
+        o.receiver_mobile as receiverMobile,
+        o.receiver_address as receiverAddress,
+        o.shipping_address as shippingAddress,
+        o.total_amount as totalAmount,
+        o.real_pay_amount as realPayAmount,
+        o.extand as extand,
+        o.order_type_rider as orderTypeRider,
+        o.post_amount AS postAmount,
+        o.pay_method	AS payMethod,
+        o.is_delivery AS isDelivery,
+        o.created_time AS createdTime,
+        os.order_status AS orderStatus,
+        oi.item_img AS itemImg,
+        oi.item_name AS itemName,
+        oi.item_spec_name as itemSpecName,
+        oi.price as price,
+        oi.buy_counts as buyCounts,
+        ss.address as storeAddress,
+        ss.detailedadd as detailedadd,
+        ss.phone as storePhone,
+        sn.username as storeName,
+        us.username as usName
+        FROM orders o
+        LEFT JOIN store_shop ss ON o.store_id = ss.store_id
+        LEFT JOIN store sn ON o.store_id = sn.id
+        LEFT JOIN order_status os ON o.id = os.order_id
+        LEFT JOIN order_items oi ON o.id = oi.order_id
+        LEFT JOIN rider rd ON rd.id = o.rider_id
+        LEFT JOIN users us ON us.id = o.user_id
+        WHERE
+        o.is_delivery =#{paramsMap.isDelivery}
+        <if test=" paramsMap.riderId != null">
+            or o.rider_id = #{paramsMap.riderId}
+        </if>
+        order by
+        <choose>
+            <otherwise>
+                o.created_time desc
+            </otherwise>
+        </choose>
+    </select>
+
+
+    <!--骑手未接单-->
+    <select id="selectRiderWeiOrders"  parameterType="Map" resultType="com.jtl.vo.OrdersListViewVo">
+        SELECT
+        o.id as id,
+        o.user_id as userId,
+        o.store_id as storeId,
+        o.rider_id as riderId,
+        o.receiver_name as receiverName,
+        o.receiver_mobile as receiverMobile,
+        o.receiver_address as receiverAddress,
+        o.shipping_address as shippingAddress,
+        o.total_amount as totalAmount,
+        o.real_pay_amount as realPayAmount,
+        o.extand as extand,
+        o.order_type_rider as orderTypeRider,
+        o.post_amount AS postAmount,
+        o.pay_method	AS payMethod,
+        o.is_delivery AS isDelivery,
+        o.created_time AS createdTime,
+        os.order_status AS orderStatus,
+        oi.item_img AS itemImg,
+        oi.item_name AS itemName,
+        oi.item_spec_name as itemSpecName,
+        oi.price as price,
+        oi.buy_counts as buyCounts,
+        ss.address as storeAddress,
+        ss.detailedadd as detailedadd,
+        ss.phone as storePhone,
+        sn.username as storeName,
+        us.username as usName
+        FROM orders o
+        LEFT JOIN store sn ON o.store_id = sn.id
+        LEFT JOIN store_shop ss ON o.store_id = ss.store_id
+        LEFT JOIN order_status os ON o.id = os.order_id
+        LEFT JOIN order_items oi ON o.id = oi.order_id
+        LEFT JOIN users us ON us.id = o.user_id
+        LEFT JOIN rider rd ON rd.id = o.rider_id
+        WHERE
+        o.is_delivery ='YES' and o.order_type_rider = #{paramsMap.orderTypeRider}
+        order by
+        <choose>
+            <otherwise>
+                o.created_time desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <!--骑手已接单和完成订单-->
+    <select id="selectRiderYiWanOrdersAll"  parameterType="Map" resultType="com.jtl.vo.OrdersListViewVo">
+        SELECT
+        o.id as id,
+        o.user_id as userId,
+        o.store_id as storeId,
+        o.rider_id as riderId,
+        o.receiver_name as receiverName,
+        o.receiver_mobile as receiverMobile,
+        o.receiver_address as receiverAddress,
+        o.shipping_address as shippingAddress,
+        o.total_amount as totalAmount,
+        o.real_pay_amount as realPayAmount,
+        o.extand as extand,
+        o.order_type_rider as orderTypeRider,
+        o.post_amount AS postAmount,
+        o.pay_method	AS payMethod,
+        o.is_delivery AS isDelivery,
+        o.created_time AS createdTime,
+        os.order_status AS orderStatus,
+        oi.item_img AS itemImg,
+        oi.item_name AS itemName,
+        oi.item_spec_name as itemSpecName,
+        oi.price as price,
+        oi.buy_counts as buyCounts,
+        rd.id as riderId,
+        oi.buy_counts as buyCounts,
+        ss.address as storeAddress,
+        ss.detailedadd as detailedadd,
+        ss.phone as storePhone,
+        sn.username as storeName,
+        us.username as usName
+        FROM orders o
+        LEFT JOIN store sn ON o.store_id = sn.id
+        LEFT JOIN store_shop ss ON o.store_id = ss.store_id
+        LEFT JOIN order_status os ON o.id = os.order_id
+        LEFT JOIN order_items oi ON o.id = oi.order_id
+        LEFT JOIN rider rd ON rd.id = o.rider_id
+        LEFT JOIN users us ON us.id = o.user_id
+        WHERE
+        o.is_delivery ='YES'
+        <if test=" paramsMap.orderTypeRider != null">
+            and o.order_type_rider = #{paramsMap.orderTypeRider}
+        </if>
+
+        <if test=" paramsMap.riderId != null">
+            and rd.id = #{paramsMap.riderId}
+        </if>
+        order by
+        <choose>
+            <otherwise>
+                o.created_time desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="queryAllById"  parameterType="Map" resultType="com.jtl.vo.OrdersListViewVo">
+        SELECT
+        o.id as id,
+        o.user_id as userId,
+        o.store_id as storeId,
+        o.rider_id as riderId,
+        o.receiver_name as receiverName,
+        o.receiver_mobile as receiverMobile,
+        o.receiver_address as receiverAddress,
+        o.shipping_address as shippingAddress,
+        o.total_amount as totalAmount,
+        o.real_pay_amount as realPayAmount,
+        o.extand as extand,
+        o.order_type_rider as orderTypeRider,
+        o.post_amount AS postAmount,
+        o.pay_method	AS payMethod,
+        o.is_delivery AS isDelivery,
+        o.created_time AS createdTime,
+        os.order_status AS orderStatus,
+        oi.item_img AS itemImg,
+        oi.item_name AS itemName,
+        oi.item_spec_name as itemSpecName,
+        oi.price as price,
+        oi.buy_counts as buyCounts,
+        oi.buy_counts as buyCounts,
+        ss.address as storeAddress,
+        ss.detailedadd as detailedadd,
+        ss.phone as storePhone,
+        sn.username as storeName,
+        us.username as usName
+        FROM orders o
+         LEFT JOIN store sn ON o.store_id = sn.id
+        LEFT JOIN store_shop ss ON o.store_id = ss.store_id
+        LEFT JOIN order_status os ON o.id = os.order_id
+        LEFT JOIN order_items oi ON o.id = oi.order_id
+        LEFT JOIN rider rd ON rd.id = o.rider_id
+        LEFT JOIN users us ON us.id = o.user_id
+        WHERE
+        o.id = #{id}
+    </select>
+
+
+
 
 
 

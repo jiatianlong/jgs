@@ -14,10 +14,30 @@ public class SubmitOrderBo {
     private Integer addressId;
     // 商品规格ID
     private String itemSpeIds;
+    // 总价格
+    private String itemPriceSum;
     // 支付方式
     private Integer payMethod;
+    //商品数量
+    private Integer itemNumber;
     //买家留言
     private String leftMsg;
+
+    public String getItemPriceSum() {
+        return itemPriceSum;
+    }
+
+    public void setItemPriceSum(String itemPriceSum) {
+        this.itemPriceSum = itemPriceSum;
+    }
+
+    public Integer getItemNumber() {
+        return itemNumber;
+    }
+
+    public void setItemNumber(Integer itemNumber) {
+        this.itemNumber = itemNumber;
+    }
 
     public Integer getUserId() {
         return userId;
