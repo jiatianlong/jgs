@@ -39,18 +39,20 @@ public class OrderViewServiceImpl implements OrderViewService {
         ordersMapper.updateByPrimaryKeySelective(orders);
     }
 
+
+    /**
+     * 用户提交订单 订单状态为待发货
+     * @param orders
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void updateYjOrder(Orders orders) {
         ordersMapper.updateByPrimaryKeySelective(orders);
-
         //(后面在商家端再修改)
         //修改订单状态表
         OrderStatus waitPayOrderStatus = new OrderStatus();
         waitPayOrderStatus.setOrderId(orders.getId());
-        waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_RECEIVE.type);
-        waitPayOrderStatus.setDeliverTime(new Date());
-
+        waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_DELIVER.type);
         orderStatusMapper.updateByPrimaryKeySelective(waitPayOrderStatus);
     }
 
@@ -65,6 +67,20 @@ public class OrderViewServiceImpl implements OrderViewService {
         waitPayOrderStatus.setOrderId(orders.getId());
         waitPayOrderStatus.setOrderStatus(OrderStatusEnum.SUCCESS.type);
         waitPayOrderStatus.setSuccessTime(new Date());
+        orderStatusMapper.updateByPrimaryKeySelective(waitPayOrderStatus);
+    }
+
+    /**
+     * 用户提交订单 修改订单状态为已发货
+     * @param orders
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void updateFh(Orders orders) {
+        OrderStatus waitPayOrderStatus = new OrderStatus();
+        waitPayOrderStatus.setOrderId(orders.getId());
+        waitPayOrderStatus.setOrderStatus(OrderStatusEnum.WAIT_RECEIVE.type);
+        waitPayOrderStatus.setDeliverTime(new Date());
         orderStatusMapper.updateByPrimaryKeySelective(waitPayOrderStatus);
     }
 

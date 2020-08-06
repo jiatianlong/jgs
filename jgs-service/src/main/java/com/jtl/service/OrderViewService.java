@@ -32,4 +32,11 @@ public interface OrderViewService {
      */
     public void updateYes(Orders orders);
 
+    /**
+     * 修改订单为已发货
+     * @param orders
+     */
+    public void updateFh(Orders orders);
+
+
 }

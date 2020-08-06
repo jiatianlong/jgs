@@ -47,6 +47,13 @@ public class OrdersViewController {
         return JTLJSONResult.ok();
     }
 
+    @ApiOperation(value = "根据ID修改订单为已发货",notes = "根据ID修改订单为已发货",httpMethod = "POST")
+    @PostMapping("/updateFh")
+    public JTLJSONResult updateFh(@RequestBody Orders orders){
+        orderViewService.updateFh(orders);
+        return JTLJSONResult.ok();
+    }
+
     @ApiOperation(value = "根据ID修改订单为已送达",notes = "根据ID修改订单为已送达",httpMethod = "POST")
     @PostMapping("/orderWcUpdate")
     public JTLJSONResult orderWcUpdate(@RequestBody Orders orders){
