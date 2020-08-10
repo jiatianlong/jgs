@@ -2,7 +2,9 @@ package com.jtl.controller.wxapi;
 
 import com.jtl.bo.SubmitOrderBo;
 import com.jtl.pojo.PayReq;
+import com.jtl.pojo.WithOrder;
 import com.jtl.service.OrderService;
+import com.jtl.service.WithOrderService;
 import com.jtl.utils.JTLJSONResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,6 +25,9 @@ public class WxPayController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private WithOrderService withOrderService;
 
     @ApiOperation(value = "微信测试环境",notes = "微信测试环境",httpMethod = "POST")
     @PostMapping("/wxCshi")
@@ -164,16 +169,9 @@ public class WxPayController {
         return JTLJSONResult.ok(payReq);
     }
 
-
-
-
-/*
-
-
     /**
      * 微信异步通知 （签约支付）
      */
-
     @PostMapping("/wxNotifySignContract")
     public void wxNotifySignContract(HttpServletRequest request, HttpServletResponse response) throws IOException, JDOMException {
 
@@ -257,5 +255,80 @@ public class WxPayController {
         }
 
     }
+
+
+
+
+    @ApiOperation(value = "配单提交",notes = "配单提交",httpMethod = "POST")
+    @PostMapping("/wxPeiOrderPay")
+    public JTLJSONResult wxPeiOrderPay(@RequestBody WithOrder withOrder){
+
+        HashMap<Object,Object> resultMap = new HashMap<>();
+        //测试环境
+        //微信默认从单位为分，所以用此方法将单位调整成元
+        //int price100 = new BigDecimal(withOrder.getWoMoney()).multiply(new BigDecimal(100)).intValue();
+        int price100 = new BigDecimal("0.01").multiply(new BigDecimal(100)).intValue();
+        SortedMap<Object, Object> parameters = new TreeMap<Object, Object>();
+        parameters.put("appid", ConfigUtil.APPID);
+        parameters.put("mch_id", ConfigUtil.MCH_ID);
+        parameters.put("nonce_str", ConfigUtil.CreateNoncestr());
+        parameters.put("body", "message");
+        parameters.put("out_trade_no", UUID.randomUUID().toString().substring(0, 15)); //订单id
+        parameters.put("fee_type", "CNY");
+        parameters.put("total_fee", String.valueOf(price100));
+        parameters.put("spbill_create_ip", "127.0.0.1");
+        //回调方法 待测试
+        parameters.put("notify_url", "http://192.168.0.102:8088/wxpay/wxNotifySignContract");
+        parameters.put("trade_type", "APP");
+        //设置签名
+        String sign = ConfigUtil.createSign("UTF-8", parameters);
+        parameters.put("sign", sign);
+        //封装请求参数结束
+        String requestXML = ConfigUtil.getRequestXml(parameters);
+        //调用统一下单接口
+        String result = ConfigUtil.httpsRequest(ConfigUtil.UNIFIED_ORDER_URL, "POST", requestXML);
+
+        System.out.println("\n" + result);
+        PayReq payReq = new PayReq();
+        try {
+            /**统一下单接口返回正常的prepay_id，再按签名规范重新生成签名后，将数据传输给APP。参与签名的字段名为appId，partnerId，prepayId，nonceStr，timeStamp，package。注意：package的值格式为Sign=WXPay**/
+            Map<String, String> map = XMLUtil.doXMLParse(result);
+            SortedMap<Object, Object> parameterMap2 = new TreeMap<Object, Object>();
+            payReq.setAppId(ConfigUtil.APPID);
+            payReq.setPartnerId(ConfigUtil.MCH_ID);
+            payReq.setPrepayId(map.get("prepay_id"));
+            payReq.setPackageValue(ConfigUtil.PACKAGEVALUE);
+            payReq.setNonceStr(ConfigUtil.CreateNoncestr());
+            payReq.setTimeStamp(Long.parseLong(String.valueOf(System.currentTimeMillis()).toString().substring(0, 10)));
+
+            parameterMap2.put("appid", payReq.getAppId());
+            parameterMap2.put("partnerid", payReq.getPartnerId());
+            parameterMap2.put("prepayid",payReq.getPrepayId());
+            parameterMap2.put("package", payReq.getPackageValue());
+            parameterMap2.put("noncestr", payReq.getNonceStr());
+            //本来生成的时间戳是13位，但是ios必须是10位，所以截取了一下
+            parameterMap2.put("timestamp", payReq.getTimeStamp());
+            String sign2 = ConfigUtil.createSign("UTF-8", parameterMap2);
+            parameterMap2.put("sign", sign2);//此 parameterMap2内容送到ios调用就可以了
+            payReq.setSign(sign2);
+            System.out.println(parameterMap2);
+
+            resultMap.put("code", "200");
+            resultMap.put("msg", parameterMap2);
+        } catch (JDOMException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //创建配单信息
+        withOrderService.insert(withOrder);
+        //明天把放回的数据添加到app前端页面上，已经成功了
+        return JTLJSONResult.ok(payReq);
+    }
+
+
+
 
 }

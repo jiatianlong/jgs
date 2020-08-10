@@ -122,7 +122,6 @@ public class PassportController {
         CookieUtils.deleteCookie(request,response,"user");
         //TODO 用户退出登录，需要清除购物车
         //TODO 分布式会话中需要清楚用户数据
-
         return JTLJSONResult.ok();
     }
 

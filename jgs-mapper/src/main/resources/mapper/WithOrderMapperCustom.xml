@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jtl.mapper.WithOrderMapperCustom" >
+
+  <resultMap id="BaseResultMap" type="com.jtl.pojo.WithOrder" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="wo_name" property="woName" jdbcType="VARCHAR" />
+    <result column="wo_phone" property="woPhone" jdbcType="VARCHAR" />
+    <result column="wo_fh_address" property="woFhAddress" jdbcType="VARCHAR" />
+    <result column="wo_sh_address" property="woShAddress" jdbcType="VARCHAR" />
+    <result column="wo_jl" property="woJl" jdbcType="VARCHAR" />
+    <result column="wo_cx" property="woCx" jdbcType="VARCHAR" />
+    <result column="wo_money" property="woMoney" jdbcType="VARCHAR" />
+    <result column="rider_id" property="riderId" jdbcType="INTEGER" />
+    <result column="rider_phone" property="riderPhone" jdbcType="VARCHAR" />
+    <result column="wo_state" property="woState" jdbcType="VARCHAR" />
+    <result column="gcrs" property="gcrs" jdbcType="VARCHAR" />
+    <result column="ewxq" property="ewxq" jdbcType="VARCHAR" />
+    <result column="wo_note" property="woNote" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+  </resultMap>
+
+  <select id="getWithOrderAll" parameterType="Map" resultMap="BaseResultMap">
+    select id,user_id,wo_name,wo_phone,wo_fh_address,wo_sh_address,
+    wo_jl,wo_cx,wo_money,rider_id,rider_phone,wo_state,
+    create_time,gcrs,ewxq,wo_note
+    from with_order
+    WHERE
+    user_id = #{paramsMap.userId}
+  </select>
+
+  <select id="getWithOrderByState" parameterType="Map" resultMap="BaseResultMap">
+    select id,user_id,wo_name,wo_phone,wo_fh_address,wo_sh_address,
+    wo_jl,wo_cx,wo_money,rider_id,rider_phone,wo_state,
+    create_time,gcrs,ewxq,wo_note
+    from with_order
+    WHERE
+    wo_state = #{paramsMap.woState}
+    <if test=" paramsMap.userId != null">
+      and user_id = #{paramsMap.userId}
+    </if>
+  </select>
+
+  <select id="getRiderWithOrderAll" parameterType="Map" resultMap="BaseResultMap">
+    select id,user_id,wo_name,wo_phone,wo_fh_address,wo_sh_address,wo_jl,wo_cx,wo_money,rider_id,rider_phone,wo_state,create_time,gcrs,ewxq,wo_note
+    from with_order
+    WHERE
+    wo_state = #{paramsMap.woState}
+    <if test=" paramsMap.riderId != null">
+      or rider_id = #{paramsMap.riderId}
+    </if>
+  </select>
+
+
+  <select id="getRiderWithOrderByState" parameterType="Map" resultMap="BaseResultMap">
+    select id,user_id,wo_name,wo_phone,wo_fh_address,wo_sh_address,wo_jl,wo_cx,wo_money,rider_id,rider_phone,wo_state,create_time,gcrs,ewxq,wo_note
+    from with_order
+    WHERE
+    wo_state = #{paramsMap.woState}
+    <if test=" paramsMap.riderId != null">
+      and rider_id = #{paramsMap.riderId}
+    </if>
+  </select>
+
+
+
+
+
+
+</mapper>

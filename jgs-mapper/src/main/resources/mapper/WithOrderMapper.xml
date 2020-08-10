@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jtl.mapper.WithOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.jtl.pojo.WithOrder" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="wo_name" property="woName" jdbcType="VARCHAR" />
+    <result column="wo_phone" property="woPhone" jdbcType="VARCHAR" />
+    <result column="wo_fh_address" property="woFhAddress" jdbcType="VARCHAR" />
+    <result column="wo_sh_address" property="woShAddress" jdbcType="VARCHAR" />
+    <result column="wo_jl" property="woJl" jdbcType="VARCHAR" />
+    <result column="wo_cx" property="woCx" jdbcType="VARCHAR" />
+    <result column="wo_money" property="woMoney" jdbcType="VARCHAR" />
+    <result column="rider_id" property="riderId" jdbcType="INTEGER" />
+    <result column="rider_phone" property="riderPhone" jdbcType="VARCHAR" />
+    <result column="wo_state" property="woState" jdbcType="VARCHAR" />
+    <result column="gcrs" property="gcrs" jdbcType="VARCHAR" />
+    <result column="ewxq" property="ewxq" jdbcType="VARCHAR" />
+    <result column="wo_note" property="woNote" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+  </resultMap>
+
+</mapper>
