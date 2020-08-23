@@ -105,11 +105,8 @@ public class PassportController {
         //设置cookie
         CookieUtils.setCookie(request,response,"user",
                 JsonUtils.objectToJson(users),true);
-
         //TODO 生成用户token，存入redis会话
         //TODO 用户购物车更新
-
-
         return JTLJSONResult.ok(users);
     }
 
@@ -123,10 +120,7 @@ public class PassportController {
         //TODO 用户退出登录，需要清除购物车
         //TODO 分布式会话中需要清楚用户数据
         return JTLJSONResult.ok();
-    }
-
-
-
+     }
 
 
 }

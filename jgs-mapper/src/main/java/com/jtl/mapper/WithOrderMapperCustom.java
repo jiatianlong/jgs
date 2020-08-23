@@ -40,6 +40,12 @@ public interface WithOrderMapperCustom{
     public List<WithOrder> getRiderWithOrderByState(@Param("paramsMap") Map<String,Object> map);
 
 
+    /**
+     * 根据用户订单状态查询用户相关订单
+     * @param map
+     * @return
+     */
+    public List<WithOrder> getRiderWithOrderByDjd(@Param("paramsMap") Map<String,Object> map);
 
 
 

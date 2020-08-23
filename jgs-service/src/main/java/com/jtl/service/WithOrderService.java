@@ -19,6 +19,12 @@ public interface WithOrderService {
     public WithOrder selAllById(Integer id);
 
     /**
+     * 更改内容
+     * @param withOrder
+     */
+    public void woUpdate(WithOrder withOrder);
+
+    /**
      * 查询与用户相关的订单
      */
     public List<WithOrder> getWithOrderAll(Integer userId);

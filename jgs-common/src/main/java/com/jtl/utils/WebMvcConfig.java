@@ -12,7 +12,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         /** 本地文件上传路径 */
-        registry.addResourceHandler("/img" + "/**").addResourceLocations("file:" + "E:/img" + "/");
+        //registry.addResourceHandler("/img" + "/**").addResourceLocations("file:" + "E:/img" + "/");
+        registry.addResourceHandler("/img" + "/**").addResourceLocations("file:/img/");
+        registry.addResourceHandler("/app" + "/**").addResourceLocations("file:/app/");
     }
 
     /**

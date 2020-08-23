@@ -8,10 +8,7 @@ import com.jtl.utils.JTLJSONResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,6 +32,16 @@ public class WithOrderController {
         return JTLJSONResult.ok(withOrder);
     }
 
+    @ApiOperation(value = "根据ID修改配单信息",notes = "根据ID修改配单信息",httpMethod = "POST")
+    @PostMapping("/woUpdate")
+    public JTLJSONResult woUpdate(@RequestBody WithOrder withOrder){
+        //判断ID是否为空
+        if(withOrder == null){
+            return JTLJSONResult.errorMsg("信息为空");
+        }
+        withOrderService.woUpdate(withOrder);
+        return JTLJSONResult.ok();
+    }
 
 
 
@@ -48,6 +55,7 @@ public class WithOrderController {
         List<WithOrder> list = withOrderService.getWithOrderAll(userId);
         return JTLJSONResult.ok(list);
     }
+
 
 
     @ApiOperation(value = "根据用户ID查询已下单配单信息",notes = "根据用户ID查询已下单配单信息",httpMethod = "GET")
@@ -127,7 +135,7 @@ public class WithOrderController {
         if(riderId == null){
             return JTLJSONResult.errorMsg("用户ID为空");
         }
-        List<WithOrder> list = withOrderService.getRiderWithOrderByDjd(riderId);
+        List<WithOrder> list = withOrderService.getRiderWithOrderByYwc(riderId);
         return JTLJSONResult.ok(list);
     }
 

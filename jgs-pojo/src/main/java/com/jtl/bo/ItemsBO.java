@@ -18,8 +18,10 @@ public class ItemsBO {
     private String content;
     @ApiModelProperty(value = "库存",name = "itemskc",example = "100",required = true)
     private String itemskc;
+
     @ApiModelProperty(value = "价格",name = "itemsPrice",example = "100.25",required = true)
     private double itemsPrice;
+
     @ApiModelProperty(value = "品牌",name = "brand",example = "xxx",required = true)
     private String brand;
 

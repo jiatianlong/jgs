@@ -45,6 +45,16 @@ public class WithOrderServiceImpl implements WithOrderService {
         return withOrderMapper.selectByPrimaryKey(id);
     }
 
+    /**
+     * 根据ID修改
+     * @param withOrder
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void woUpdate(WithOrder withOrder) {
+        withOrderMapper.updateByPrimaryKeySelective(withOrder);
+    }
+
 
     /**
      * 查询与用户相关的订单
@@ -130,7 +140,7 @@ public class WithOrderServiceImpl implements WithOrderService {
         Map<String,Object> map = new HashMap<>();
         map.put("woState","10");
         map.put("riderId",riderId);
-        List<WithOrder> list = withOrderMapperCustom.getRiderWithOrderByState(map);
+        List<WithOrder> list = withOrderMapperCustom.getRiderWithOrderByDjd(map);
         return list;
     }
 

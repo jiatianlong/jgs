@@ -66,6 +66,14 @@
     </if>
   </select>
 
+  <select id="getRiderWithOrderByDjd" parameterType="Map" resultMap="BaseResultMap">
+    select id,user_id,wo_name,wo_phone,wo_fh_address,wo_sh_address,wo_jl,wo_cx,wo_money,rider_id,rider_phone,wo_state,create_time,gcrs,ewxq,wo_note
+    from with_order
+    WHERE
+    wo_state = #{paramsMap.woState}
+  </select>
+
+
 
 
 

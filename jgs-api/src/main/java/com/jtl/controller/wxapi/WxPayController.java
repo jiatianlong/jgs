@@ -63,9 +63,6 @@ public class WxPayController {
             /**统一下单接口返回正常的prepay_id，再按签名规范重新生成签名后，将数据传输给APP。参与签名的字段名为appId，partnerId，prepayId，nonceStr，timeStamp，package。注意：package的值格式为Sign=WXPay**/
             Map<String, String> map = XMLUtil.doXMLParse(result);
             SortedMap<Object, Object> parameterMap2 = new TreeMap<Object, Object>();
-
-
-
             payReq.setAppId(ConfigUtil.APPID);
             payReq.setPartnerId(ConfigUtil.MCH_ID);
             payReq.setPrepayId(map.get("prepay_id"));
@@ -84,7 +81,6 @@ public class WxPayController {
             parameterMap2.put("sign", sign2);//此 parameterMap2内容送到ios调用就可以了
             payReq.setSign(sign2);
             System.out.println(parameterMap2);
-
             resultMap.put("code", "200");
             resultMap.put("msg", parameterMap2);
         } catch (JDOMException e) {
@@ -102,9 +98,6 @@ public class WxPayController {
     @ApiOperation(value = "订单提交",notes = "订单提交",httpMethod = "POST")
     @PostMapping("/wxOrderPay")
     public JTLJSONResult wxOrderPay(@RequestBody SubmitOrderBo submitOrderBo){
-
-
-
         //double money = Double.valueOf(price);
         HashMap<Object,Object> resultMap = new HashMap<>();
         //测试环境
@@ -166,6 +159,8 @@ public class WxPayController {
         }
         orderService.createOrder(submitOrderBo);
         //明天把放回的数据添加到app前端页面上，已经成功了
+
+
         return JTLJSONResult.ok(payReq);
     }
 
@@ -174,7 +169,6 @@ public class WxPayController {
      */
     @PostMapping("/wxNotifySignContract")
     public void wxNotifySignContract(HttpServletRequest request, HttpServletResponse response) throws IOException, JDOMException {
-
         try {
             //读取参数
             InputStream inputStream;
@@ -246,12 +240,10 @@ public class WxPayController {
             out.write(resXml.getBytes());
             out.flush();
             out.close();
-
             System.out.println("微信回调接口成功--------");
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("微信回调接口失败--------");
-
         }
 
     }
@@ -262,7 +254,6 @@ public class WxPayController {
     @ApiOperation(value = "配单提交",notes = "配单提交",httpMethod = "POST")
     @PostMapping("/wxPeiOrderPay")
     public JTLJSONResult wxPeiOrderPay(@RequestBody WithOrder withOrder){
-
         HashMap<Object,Object> resultMap = new HashMap<>();
         //测试环境
         //微信默认从单位为分，所以用此方法将单位调整成元
@@ -327,6 +318,10 @@ public class WxPayController {
         //明天把放回的数据添加到app前端页面上，已经成功了
         return JTLJSONResult.ok(payReq);
     }
+
+
+
+
 
 
 

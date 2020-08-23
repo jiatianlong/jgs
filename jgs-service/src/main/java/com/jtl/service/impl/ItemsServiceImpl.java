@@ -338,15 +338,20 @@ public class ItemsServiceImpl implements ItemsService {
         //图片地址
         String url;
 
+
         for (int i = 0;i<list.size();i++){
             id = list.get(i).getId();
             itemName = list.get(i).getItemName();
             itemContent = list.get(i).getContent();
             sellCounts = list.get(i).getSellCounts();
+
             List<ItemsSpec> specs = this.queryItemSpecList(id);
-            priceDiscount = specs.get(0).getPriceDiscount();
+            priceDiscount = Double.valueOf(specs.get(0).getPriceDiscount());
             url = specs.get(0).getUrl();
+
             items.add(new ItemsOrSpecOrImgBO(id,itemName,itemContent,sellCounts,priceDiscount,url));
+
+
         }
 
         return items;
@@ -385,7 +390,7 @@ public class ItemsServiceImpl implements ItemsService {
         //优惠价
         itemsSpec.setPriceDiscount(itemsBO.getItemsPrice());
         //原价
-        itemsSpec.setPriceNormal(itemsBO.getItemsPrice());
+        itemsSpec.setPriceNormal(Double.valueOf(itemsBO.getItemsPrice()));
         itemsSpec.setUrl(itemsBO.getItemImgPath());
         itemsSpec.setCreatedTime(new Date());
         itemsSpec.setDiscounts(0);
